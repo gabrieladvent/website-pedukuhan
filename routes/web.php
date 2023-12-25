@@ -14,5 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('leading');
+})->name('home');
+
+Route::get('/rakyat', function () {
+    return view('cerita-rakyat-view');
+})->name('rakyat');
+
+Route::get('/kearifan-lokal', function () {
+    return view('kearifan-lokal-view');
+})->name('kearifan');
+
+Route::get('/kegiatan-masyarakat', function () {
+    return view('kegiatan-view');
+})->name('kegiatan');

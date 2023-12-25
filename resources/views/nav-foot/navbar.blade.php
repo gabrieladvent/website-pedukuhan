@@ -14,10 +14,10 @@
                 class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="services.html">Kegiatan</a></li>
-                <li class="nav-item"><a class="nav-link" href="projects.html">Cerita Rakyat</a></li>
-                <li class="nav-item"><a class="nav-link" href="pricing.html">Kearifan Lokal</a></li>
+                <li class="nav-item"><a class="nav-link active" href="{{ route('home') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('kegiatan') }}">Kegiatan</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('rakyat') }}">Cerita Rakyat</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('kearifan') }}">Kearifan Lokal</a></li>
                 <li class="nav-item"><a class="nav-link" href="contacts.html">Kontak</a></li>
             </ul><a class="btn btn-primary shadow" role="button" href="signup.html">Login</a>
         </div>
