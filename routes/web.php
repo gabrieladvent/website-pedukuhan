@@ -28,3 +28,7 @@ Route::get('/kearifan-lokal', function () {
 Route::get('/kegiatan-masyarakat', function () {
     return view('kegiatan-view');
 })->name('kegiatan');
+
+Route::get('/login-weru/admin', function () {
+    return view('auth.login');
+})->name('login');
