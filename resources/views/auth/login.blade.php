@@ -4,38 +4,90 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dashboard</title>
-    <link href="#" rel="icon">
-
-    <!-- Font Awesome -->
+    <title>Weru | Login</title>
+    <link href="{{ asset('assets/img/icon.png') }}" rel="icon">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-    <!-- MDB -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
-
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="{{ asset('assets/css/login-style.css') }}">
-
 </head>
 
 <body>
+    @if ($errors->any())
+        <div class="errors ps-5 pe-5">
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    @elseif(session('success'))
+    <div class="success ps-5 pe-5">
+        <div class="success-message">
+            <p>{{ session('success') }}</p>
+        </div>
+    </div>
+    @endif
+    <div class="login-reg-panel">
+        <div class="login-info-box">
+            <h2>Have an account?</h2>
+            <p>Only admins have active accounts</p>
+            <label id="label-register" for="log-reg-show">Login</label>
+            <input type="radio" name="active-log-panel" id="log-reg-show" checked="checked">
+        </div>
 
-    <body>
-        <form class="login">
-            <input type="text" placeholder="Username">
-            <input type="password" placeholder="Password">
-            <button>Login</button>
-          </form>
-          
-          <a href="https://codepen.io/davinci/" target="_blank">check my other pens</a>
-    </body>
+        <div class="register-info-box">
+            <h2>Don't have an account?</h2>
+            <p>Only people who have permission from the admin are allowed to register</p>
+            <label id="label-login" for="log-login-show">Register</label>
+            <input type="radio" name="active-log-panel" id="log-login-show">
+        </div>
+
+        <div class="white-panel">
+            <div class="login-show">
+                <h2>LOGIN</h2>
+                <h3>Admin Panel <i class="fa-solid fa-key"></i></h3>
+                <form action="{{ route('prosesLogin') }}" method="POST">
+                    @csrf
+                    <input type="text" placeholder="Username" name="email">
+                    <input type="password" placeholder="Password" name="password">
+                    <button type="submit">Login</button>
+                </form>
+                <div class="row">
+                    <div class="col">
+                        <a href="#" id="goBackLink"><i class="fa-regular fa-hand-point-left"></i> Kembali</a>
+                    </div>
+                </div>
+            </div>
+            <div class="register-show">
+                <h2>REGISTER</h2>
+                <form action="{{ route('register') }}" method="POST">
+                    @csrf
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" placeholder="First Name" name="first_name" required>
+                        </div>
+                        <div class="col">
+                            <input type="text" placeholder="Last Name" name="last_name" required>
+                        </div>
+                    </div>
+                    <input type="text" placeholder="Username" name="username" required>
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                        name="password" required autocomplete="new-password" placeholder="Password">
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
+                        required autocomplete="new-password" placeholder="Konfirmasi Password">
+                    <button type="submit">Register</button>
+                </form>
+                <div class="row">
+                    <div class="col">
+                        <a href="#" id="goBackLink"><i class="fa-regular fa-hand-point-left"></i> Kembali</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
@@ -50,8 +102,10 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
 
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bold-and-dark.js') }}"></script>
     <script src="{{ asset('assets/js/login-js.js') }}"></script>
 </body>
 

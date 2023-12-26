@@ -1,5 +1,12 @@
 <?php
 
+use App\Http\Controllers\LoginModelController;
+use App\Http\Controllers\UserController;
+use App\Http\Middleware\CheckDevice;
+use App\Http\Middleware\DeniedMobile;
+use App\Http\Middleware\IsAdmin;
+use App\Http\Middleware\isLogin;
+use App\Models\LoginModel;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,18 +24,33 @@ Route::get('/', function () {
     return view('leading');
 })->name('home');
 
-Route::get('/rakyat', function () {
+Route::get('rakyat', function () {
     return view('cerita-rakyat-view');
 })->name('rakyat');
 
-Route::get('/kearifan-lokal', function () {
+Route::get('kearifan-lokal', function () {
     return view('kearifan-lokal-view');
 })->name('kearifan');
 
-Route::get('/kegiatan-masyarakat', function () {
+Route::get('kegiatan-masyarakat', function () {
     return view('kegiatan-view');
 })->name('kegiatan');
 
-Route::get('/login-weru/admin', function () {
-    return view('auth.login');
-})->name('login');
+
+Route::group([
+    'middleware' => CheckDevice::class
+], function () {
+    Route::get('login-weru/admin', [LoginModelController::class, 'index'])->name('login');
+
+    Route::post('register-users/admin', [UserController::class, 'register'])->name('register');
+    Route::post('home/admin', [LoginModelController::class, 'loginProses'])->name('prosesLogin');
+
+    Route::group([
+        'middleware' =>isLogin::class,
+        'middleware' =>IsAdmin::class
+    ], function () {
+        Route::get('dashboard/admin', function () {
+            return view('admin.dashboard-admin');
+        })->name('dashboard-admin');
+    });
+});

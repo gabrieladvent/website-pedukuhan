@@ -1,53 +1,28 @@
-const themes = [
-    {
-        background: "#1A1A2E",
-        color: "#FFFFFF",
-        primaryColor: "#0F3460"
-    },
-    {
-        background: "#461220",
-        color: "#FFFFFF",
-        primaryColor: "#E94560"
-    },
-    {
-        background: "#192A51",
-        color: "#FFFFFF",
-        primaryColor: "#967AA1"
-    },
-    {
-        background: "#F7B267",
-        color: "#000000",
-        primaryColor: "#F4845F"
-    },
-    {
-        background: "#F25F5C",
-        color: "#000000",
-        primaryColor: "#642B36"
-    },
-    {
-        background: "#231F20",
-        color: "#FFF",
-        primaryColor: "#BB4430"
+$(document).ready(function () {
+    $(".login-info-box").fadeOut();
+    $(".login-show").addClass("show-log-panel");
+});
+
+$('.login-reg-panel input[type="radio"]').on("change", function () {
+    if ($("#log-login-show").is(":checked")) {
+        $(".register-info-box").fadeOut();
+        $(".login-info-box").fadeIn();
+
+        $(".white-panel").addClass("right-log");
+        $(".register-show").addClass("show-log-panel");
+        $(".login-show").removeClass("show-log-panel");
+    } else if ($("#log-reg-show").is(":checked")) {
+        $(".register-info-box").fadeIn();
+        $(".login-info-box").fadeOut();
+
+        $(".white-panel").removeClass("right-log");
+
+        $(".login-show").addClass("show-log-panel");
+        $(".register-show").removeClass("show-log-panel");
     }
-];
+});
 
-const setTheme = (theme) => {
-    const root = document.querySelector(":root");
-    root.style.setProperty("--background", theme.background);
-    root.style.setProperty("--color", theme.color);
-    root.style.setProperty("--primary-color", theme.primaryColor);
-    root.style.setProperty("--glass-color", theme.glassColor);
-};
-
-const displayThemeButtons = () => {
-    const btnContainer = document.querySelector(".theme-btn-container");
-    themes.forEach((theme) => {
-        const div = document.createElement("div");
-        div.className = "theme-btn";
-        div.style.cssText = `background: ${theme.background}; width: 25px; height: 25px`;
-        btnContainer.appendChild(div);
-        div.addEventListener("click", () => setTheme(theme));
-    });
-};
-
-displayThemeButtons();
+document.getElementById('goBackLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior of the link
+    window.history.back(); // Go back to the previous page
+});

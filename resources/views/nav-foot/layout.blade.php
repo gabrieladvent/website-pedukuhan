@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Dashboard</title>
-    <link href="#" rel="icon">
+    <link href="{{ asset('assets/img/icon.png') }}" rel="icon">
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
 
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css')  }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/login-style.css')  }}">
 
 </head>
 
@@ -43,6 +42,5 @@
 
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js')  }}"></script>
     <script src="{{ asset('assets/js/bold-and-dark.js')  }}"></script>
-    <script src="{{ asset('assets/js/login-js.js')  }}"></script>
 </body>
 </html>
