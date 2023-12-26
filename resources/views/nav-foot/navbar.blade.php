@@ -18,8 +18,7 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('kegiatan') }}">Kegiatan</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('rakyat') }}">Cerita Rakyat</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('kearifan') }}">Kearifan Lokal</a></li>
-                <li class="nav-item"><a class="nav-link" href="contacts.html">Kontak</a></li>
-            </ul><a class="btn btn-primary shadow" role="button" href="signup.html">Login</a>
+            </ul><a class="btn btn-primary shadow" role="button" href="{{ route('login') }}">Login</a>
         </div>
     </div>
 </nav>

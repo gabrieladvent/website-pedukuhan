@@ -1,11 +1,13 @@
 @extends('nav-foot.layout')
 @section('isi-content')
-    <section class="py-5">
+    <section>
         <div class="container py-5">
             <div class="row mb-4 mb-lg-5">
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
-                    <p class="fw-bold text-success mb-2">Our Services</p>
-                    <h3 class="fw-bold">What we can do for you</h3>
+                    <h2 class="fw-bold">Kearifan Lokal</h2>
+                    <p class="text-muted">Pada bagian ini Anda akan melihat bermacam-macam kearidan lokal yang ada di
+                        <strong>Pedukuhan Weru</strong>
+                    </p>
                 </div>
             </div>
             <div class="row row-cols-1 row-cols-md-2 mx-auto" style="max-width: 900px;">
