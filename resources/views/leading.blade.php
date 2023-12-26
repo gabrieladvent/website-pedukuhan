@@ -38,6 +38,7 @@
                 </span>
                 &nbsp;Persembahan dari mahasiswa KKN
             </p>
+            <p class="fw-bold text-success mb-2">Didukung Oleh:</p>
             <a href="#"> <img class="m-3" src="assets/img/brands/google.png"></a>
             <a href="#"> <img class="m-3" src="assets/img/brands/microsoft.png"></a>
             <a href="#"> <img class="m-3" src="assets/img/brands/apple.png"></a>
@@ -100,10 +101,14 @@
                                     Erat netus est hendrerit, nullam et quis ad cras
                                     porttitor iaculis. Bibendum vulputate cras aenean.
                                 </p>
-                                <button class="btn btn-primary shadow" type="button">Learn more</button>
+                                <button class="btn btn-primary shadow" type="button">more</button>
                             </div>
                         </div>
+                        <div class="col mt-3 text-end">
+                            <a href="{{ route('rakyat') }}">See More <i class="fa-regular fa-hand-point-right"></i></a>
+                        </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -133,7 +138,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-4">
+                    <div class="col">
                         <div class="card bg-info-light">
                             <div class="card-body text-center px-4 py-5 px-md-5">
                                 <p class="fw-bold text-info card-text mb-2">Fully Managed</p>
@@ -142,13 +147,16 @@
                                 <button class="btn btn-info btn-sm" type="button">Learn more</button>
                             </div>
                         </div>
+                        <div class="text-end mt-3 me-2">
+                            <a href="{{ route('kearifan') }}">See More <i class="fa-regular fa-hand-point-right"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-5 mt-5">
+    <section class="py-5">
         <div class="container mx-auto py-5">
             <div class="row mb-5">
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
