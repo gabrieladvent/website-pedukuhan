@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('login', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_user');
+            $table->uuid('kode_user');
             $table->timestamps();
 
             // Mendefinisikan kolom kode_user sebagai foreign key
             $table->foreign('kode_user')
-                ->references('kode_user')
+                ->references('id')
                 ->on('users')
                 ->onDelete('cascade'); // Jika ingin menggunakan penghapusan berantai (cascade deletion)
         });

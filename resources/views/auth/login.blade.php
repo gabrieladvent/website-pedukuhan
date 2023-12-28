@@ -12,23 +12,16 @@
 </head>
 
 <body>
-    @if ($errors->any())
-        <div class="errors ps-5 pe-5">
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+    @if (session()->has('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('error') }}
         </div>
-    @elseif(session('success'))
-    <div class="success ps-5 pe-5">
-        <div class="success-message">
-            <p>{{ session('success') }}</p>
+    @elseif (session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
         </div>
-    </div>
     @endif
+
     <div class="login-reg-panel">
         <div class="login-info-box">
             <h2>Have an account?</h2>

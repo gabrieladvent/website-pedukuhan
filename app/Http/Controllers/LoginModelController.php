@@ -14,9 +14,7 @@ class LoginModelController extends Controller
 
     public function index()
     {
-        // kita ambil data user lalu simpan pada variable $user
         $user = Auth::user();
-        // kondisi jika user nya ada 
         if ($user) {
             if (($user->admin == 4 || $user->admin == 6) && ($user->activate == 5 || $user->activate == 7)) {
                 return redirect()->intended('dashboard/admin');
@@ -27,17 +25,18 @@ class LoginModelController extends Controller
 
     public function loginProses(Request $request)
     {
-        $request->validate([
+        $credentials = $request->validate([
             'email' => 'required',
             'password' => 'required'
         ]);
 
-        $credential = $request->only('email', 'password');
-        if (Auth::attempt($credential)) {
-            $user =  Auth::user();
-            // return view('admin.dashboard-admin', compact('user'));
+        if(Auth::attempt($credentials)){
+            $user = Auth::user();
+            // dump($user,session()->all());
+            $request->session()->regenerate();
             return redirect()->intended('dashboard/admin');
         }
-        return redirect()->back()->with('error', 'Maaf anda tidak memiliki akses');
+
+        return back()->with('error', 'Login Gagal');
     }   
 }

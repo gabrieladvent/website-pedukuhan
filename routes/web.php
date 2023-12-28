@@ -1,12 +1,12 @@
 <?php
 
+use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\LoginModelController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckDevice;
-use App\Http\Middleware\DeniedMobile;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Middleware\isLogin;
-use App\Models\LoginModel;
+use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,17 +40,21 @@ Route::get('kegiatan-masyarakat', function () {
 Route::group([
     'middleware' => CheckDevice::class
 ], function () {
-    Route::get('login-weru/admin', [LoginModelController::class, 'index'])->name('login');
 
-    Route::post('register-users/admin', [UserController::class, 'register'])->name('register');
-    Route::post('home/admin', [LoginModelController::class, 'loginProses'])->name('prosesLogin');
-
-    Route::group([
-        'middleware' =>isLogin::class,
-        'middleware' =>IsAdmin::class
+    Route::group([ 
+        'middleware' => RedirectIfAuthenticated::class,
     ], function () {
-        Route::get('dashboard/admin', function () {
-            return view('admin.dashboard-admin');
-        })->name('dashboard-admin');
+        Route::get('login-weru/admin', [LoginModelController::class, 'index'])->name('login');
+        Route::post('register-users/admin', [UserController::class, 'register'])->name('register');
+        Route::post('home/admin', [LoginModelController::class, 'loginProses'])->name('prosesLogin');
+    });
+
+
+    Route::group([ 
+        'middleware' => [isLogin::class, IsAdmin::class]
+    ], function () {
+        Route::get('dashboard/admin', [dashboardController::class, 'index'])->name('dashboard-admin');
+
+    Route::get('logout', [dashboardController::class, 'logout']);
     });
 });

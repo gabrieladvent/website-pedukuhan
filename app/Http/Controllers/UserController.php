@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -20,23 +21,27 @@ class UserController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->back()->withInput()->withErrors($validator);
+            return redirect()->back()->with('error', $validator);
         }
         $first_name = $request->input('first_name');
         $last_name = $request->input('last_name');
         $random_number = mt_rand(100, 999);
-        $kode_user = 'adm-' . $first_name . '-' . $last_name . '-' . $random_number;
+        // $kode_user = 'adm-' . $first_name . '-' . $last_name . '-' . $random_number;
         $slug = Str::slug($first_name . '-' . $last_name);
 
-        $user = new User();
-        $user->kode_user = $kode_user;
-        $user->first_name = $first_name;
-        $user->last_name = $last_name;
-        $user->email = $request->input('username');
-        $user->password = bcrypt($request->input('password'));
-        $user->slug = $slug;
-        $user->save();
+        // try {
+            $user = new User();
+            // $user->kode_user = $kode_user;
+            $user->first_name = $first_name;
+            $user->last_name = $last_name;
+            $user->email = $request->input('username');
+            $user->password = bcrypt($request->input('password'));
+            $user->slug = $slug;
+            $user->save();
 
-        return redirect()->route('login')->with('success', 'User registered successfully!');
+            return redirect()->route('login')->with('success', 'Akun Berhasil Terdaftar');
+        // } catch (Exception $e) {
+        //     return redirect()->route('login')->with('error', 'Registrasi Gagal');
+        // }
     }
 }

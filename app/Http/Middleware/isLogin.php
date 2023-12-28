@@ -16,10 +16,11 @@ class isLogin
      */
     public function handle(Request $request, Closure $next)
     {
+        // dd(Auth::user(), Auth::check());
         if (!Auth::check()) {
             return redirect()->back()->with('error', 'Maaf anda tidak memiliki akses');
         }
-        $user = Auth::user();
+        
         return $next($request);
     }
 }

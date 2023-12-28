@@ -14,18 +14,11 @@ class IsAdmin
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    // public function handle(Request $request, Closure $next): Response
-    // {
-    //     if (Auth::user() &&  (Auth::user()->admin == 4 || Auth::user()->admin == 6) && (Auth::user()->activate == 5 || Auth::user()->activate == 7)) {
-    //         return $next($request);
-    //     }
-
-    //     abort(404, 'Your is IMPOSTOR in our comunity');
-    // }
 
     public function handle(Request $request, Closure $next)
     {
         $user = Auth::user();
+        // dd($user, 'isAdmin', Auth::check());
 
         $allowedAdminValues = ['4', '6'];
         $allowedActivateValues = ['5', '7'];
@@ -33,7 +26,6 @@ class IsAdmin
         if ($user && in_array($user->admin, $allowedAdminValues) && in_array($user->activate, $allowedActivateValues)) {
             return $next($request);
         }
-
         abort(404, 'You are an IMPOSTOR in our community');
     }
 }
