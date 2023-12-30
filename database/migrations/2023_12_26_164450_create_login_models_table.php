@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('login', function (Blueprint $table) {
             $table->id();
-            $table->uuid('kode_user');
+            $table->string('kode_user');
             $table->timestamps();
 
             // Mendefinisikan kolom kode_user sebagai foreign key

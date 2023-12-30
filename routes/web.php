@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\LoginModelController;
+use App\Http\Controllers\PostingController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckDevice;
 use App\Http\Middleware\IsAdmin;
@@ -21,8 +22,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('leading');
+    $longitude = -8.0860096;
+    $latitude = 110.7109651;
+    return view('leading', compact('longitude', 'latitude'));
 })->name('home');
+
 
 Route::get('rakyat', function () {
     return view('cerita-rakyat-view');
@@ -55,6 +59,12 @@ Route::group([
     ], function () {
         Route::get('dashboard/admin', [dashboardController::class, 'index'])->name('dashboard-admin');
 
-    Route::get('logout', [dashboardController::class, 'logout']);
+        Route::get('add/post/admin', [PostingController::class, 'index'])->name('post-view');
+        Route::post('add/post/admin/upload', [PostingController::class, 'addPost'])->name('post-proses');
+
+        Route::get('admin/daftar-postingan', [PostingController::class, 'daftar_posting'])->name('daftar-post');
+        Route::get('detail-posting/{slug}/{kode_user}', [PostingController::class, 'showPosting'])->name('show-post');
+
+    Route::get('logout', [dashboardController::class, 'logout'])->name('logout');
     });
 });

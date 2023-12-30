@@ -108,7 +108,24 @@
                             <a href="{{ route('rakyat') }}">See More <i class="fa-regular fa-hand-point-right"></i></a>
                         </div>
                     </div>
-                    
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container bg-dark py-5">
+            <div class="row">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <p class="fw-bold text-success mb-2">Video Profile Pedukuhan</p>
+                </div>
+            </div>
+            <div class="py-5 p-lg-5">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/23PkijCRZ9E?rel=0&autoplay=1"
+                        allowfullscreen>
+                    </iframe>
                 </div>
             </div>
         </div>
@@ -155,6 +172,52 @@
             </div>
         </div>
     </section>
+
+    <section>
+        <div class="container bg-dark py-5">
+            <div class="row">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <p class="fw-bold text-success mb-2">Lokasi Pedukuhan</p>
+                </div>
+            </div>
+            <div class="py-5 ms-3 p-lg-5">
+                <div class="mapouter">
+                    <div class="gmap_canvas"><iframe
+                            src="https://maps.google.com/maps?q=Weru%20Petir%20Kec.%20Rongkop%20Kabupaten%20Gunung%20Kidul%20Daerah%20Istimewa%20Yogyakarta&amp;t=k&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+                            frameborder="0" scrolling="no" style="width: 990px; height: 400px;"></iframe>
+                        <style>
+                            .mapouter {
+                                position: relative;
+                                height: 400px;
+                                width: 990px;
+                                background: #fff;
+                            }
+
+                            .maprouter a {
+                                color: #fff !important;
+                                position: absolute !important;
+                                top: 0 !important;
+                                z-index: 0 !important;
+                            }
+                        </style><a href="https://blooketjoin.org/">blooket</a>
+                        <style>
+                            .gmap_canvas {
+                                overflow: hidden;
+                                height: 400px;
+                                width: 990px
+                            }
+
+                            .gmap_canvas iframe {
+                                position: relative;
+                                z-index: 2
+                            }
+                        </style>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <section class="py-5">
         <div class="container mx-auto py-5">

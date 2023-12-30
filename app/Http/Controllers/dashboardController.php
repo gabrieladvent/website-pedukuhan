@@ -8,12 +8,12 @@ use Illuminate\Support\Facades\Auth;
 class dashboardController extends Controller
 {
     public function index()  {
-
-        return view('admin.dashboard-admin');
+        $user = Auth::user();
+        return view('admin.dashboard-admin', compact('user'));
     }
 
     public function logout() {
         Auth::logout();
-        return redirect()->route('login');
+        return redirect()->route('home');
     }
 }

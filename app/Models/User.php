@@ -17,9 +17,10 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    public $incrementing = false;
     protected $fillable = [
         'kode_user', 'first_name', 'last_name', 'email', 'password',
-        'slug'
+        'slug', 'admin', 'activate'
     ];
 
     /**
@@ -41,4 +42,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function postings() {
+        return $this->hasMany(PostingModel::class, 'kode_user');
+    }
 }
