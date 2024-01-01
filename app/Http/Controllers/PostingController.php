@@ -56,28 +56,19 @@ class PostingController extends Controller
                     $lokasiSimpan = 'public/imagePost/';
 
                     $foto->storeAs($lokasiSimpan, $namaFile);
-
-                    // Tambahkan jalur yang benar ke dalam array $fotoPaths
-                    $fotoPaths[$fotoName] = $lokasiSimpan . $namaFile;
+                    $fotoPaths[$fotoName] = 'imagePost/' . $namaFile;
                 }
             }
 
-            // Periksa apakah ada setidaknya satu file yang diunggah sebelum membuat posting
             if (!empty($fotoPaths)) {
-                // Tambahkan jalur file ke dalam $validateData
                 $validateData = array_merge($validateData, $fotoPaths);
-
-                // dd($validateData);
-                // Buat posting
                 $post = PostingModel::create($validateData);
 
                 return redirect()->route('daftar-post')->with('success', 'Post berhasil ditambahkan!');
             } else {
-                // Jika tidak ada file yang diunggah, kembalikan dengan pesan error
                 return redirect()->back()->with('error', 'Gagal mengupload foto. Pastikan unggah setidaknya satu foto.');
             }
         } catch (\Throwable $e) {
-            // Tangani error dengan pesan yang lebih spesifik
             return redirect()->back()->with('error', 'Gagal mengupload foto. Pesan error: ' . $e->getMessage());
         }
     }
@@ -93,9 +84,31 @@ class PostingController extends Controller
             return redirect()->back()->with('error', 'Postingan Tidak Ditemukan');
         }
 
-        $users = User::find($kode_user);
+        $users = User::where('id', $kode_user)->get(); // Mengambil koleksi user
         $kategori = kategoriModel::find($post->id_kategori);
 
         return view('admin.show-post', compact('user', 'post', 'users', 'kategori'));
+    }
+
+    public function editPosting($slug, $kode_user)
+    {
+        // dd($slug, $kode_user);
+        $user = Auth::user();
+        $post = postingModel::where('slug', $slug)
+            ->where('kode_user', $kode_user)
+            ->first();
+
+        if ($user->id != $kode_user) {
+            return redirect()->back()->with('error', 'Anda Tidak Dapat Mengedit');
+        }
+        if (!$post) {
+            return redirect()->back()->with('error', 'Postingan Tidak Ditemukan');
+        }
+
+        $users = User::where('id', $kode_user)->get(); // Mengambil koleksi user
+        $kategori = kategoriModel::find($post->id_kategori);
+        $kategories = kategoriModel::all();
+
+        return view('admin.edit-post', compact('user', 'post', 'users', 'kategori', 'kategories'));
     }
 }

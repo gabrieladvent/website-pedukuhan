@@ -16,11 +16,16 @@
             <table id="example" class="display" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Judul</th>
-                        <th>Kategori</th>
-                        <th>Penulis</th>
-                        <th>Headline</th>
-                        <th>Aksi</th>
+                        <th rowspan="2" class="text-center">Judul</th>
+                        <th rowspan="2" class="text-center">Kategori</th>
+                        <th rowspan="2" class="text-center">Penulis</th>
+                        <th rowspan="2" class="text-center">Headline</th>
+                        <th colspan="3" class="text-center">Aksi</th>
+                    </tr>
+                    <tr style="display:none">
+                        <th></th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,21 +41,16 @@
                             <td class="text-wrap">{{ $post->headline }}</td>
                             <td>
                                 <a href="{{ route('show-post', ['slug' => $post->slug, 'kode_user' => $post->kode_user]) }}" class="btn btn-info"><i class="fa-solid fa-eye"></i></a>
-                                <a href="#" class="btn btn-dark"><i class="fa-solid fa-pencil"></i></a>
+                            </td>
+                            <td>
+                                <a href="{{ route('edit-post', ['slug' => $post->slug, 'kode_user' => $post->kode_user]) }}" class="btn btn-dark"><i class="fa-solid fa-pencil"></i></a>
+                            </td>
+                            <td>
                                 <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </tfoot>
             </table>
         </div>
     </main>

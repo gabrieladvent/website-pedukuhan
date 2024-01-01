@@ -18,16 +18,9 @@
                 placeholder="Masukan Judul" name="title" readonly value="{{ $post->title }}">
         </div>
         <div class="mb-3">
-            <label for="title" class="form-label">Kategori</label>
-            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
-                placeholder="Masukan Judul" name="title" readonly value="{{ $post->kategori->kategori_name }}">
-        </div>
-        <div class="mb-3">
             <label for="title" class="form-label">Penulis</label>
-            @foreach ($users as $users)
-        
-                @if ($users->id == $post->kode_user)
-                
+            @foreach ($users as $item)
+                @if ($item->id == $post->kode_user)
                     <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
                         placeholder="Masukan Judul" name="title" readonly
                         value="{{ $item->first_name . ' ' . $item->last_name }}">
@@ -35,12 +28,58 @@
             @endforeach
         </div>
         <div class="mb-3">
+            <label for="title" class="form-label">Kategori</label>
+            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
+                placeholder="Masukan Judul" name="title" readonly value="{{ $post->kategori->kategori_name }}">
+        </div>
+        <div class="mb-3">
             <label for="body" class="form-label">Body</label>
-            <!-- Tambahkan textarea untuk menyimpan isi body (untuk ditampilkan dalam Trix) -->
             <textarea id="body" name="body" style="display: none;">{{ $post->body }}</textarea>
-
-            <!-- Tampilkan editor Trix -->
             <trix-editor input="body" style="pointer-events: none;"></trix-editor>
+        </div>
+        <div class="mb-4">
+            <label for="body" class="form-label">Dokumentasi</label>
+            <div class="row">
+                @if ($post->foto_satu)
+                    <div class="col-md-4">
+                        <img src="{{ asset('storage/' . $post->foto_satu) }}" alt="foto_satu" class="img-fluid"
+                            width="50%">
+                    </div>
+                @endif
+
+                @if ($post->foto_dua)
+                    <div class="col-md-4">
+                        <img src="{{ asset('storage/' . $post->foto_dua) }}" alt="foto_dua" class="img-fluid"
+                            width="50%">
+                    </div>
+                @endif
+
+                @if ($post->foto_tiga)
+                    <div class="col-md-4">
+                        <img src="{{ asset('storage/' . $post->foto_tiga) }}" alt="foto_dua" class="img-fluid"
+                            width="50%">
+                    </div>
+                @endif
+
+                @if ($post->foto_empat)
+                    <div class="col-md-4">
+                        <img src="{{ asset('storage/' . $post->foto_empat) }}" alt="foto_dua" class="img-fluid"
+                            width="50%">
+                    </div>
+                @endif
+
+                @if ($post->foto_lima)
+                    <div class="col-md-4">
+                        <img src="{{ asset('storage/' . $post->foto_lima) }}" alt="foto_dua" class="img-fluid"
+                            width="50%">
+                    </div>
+                @endif
+            </div>
+        </div>
+        <div class="mb-3">
+            <a href="#" class="btn btn-danger"><i class="fa-solid fa-hand-point-left me-2"></i>Kembali</a>
+            <a href="{{ route('edit-post', ['slug' => $post->slug, 'kode_user' => $post->kode_user]) }}"
+                class="btn btn-info"><i class="fa-solid fa-pen-clip me-2"></i>Edit</a>
         </div>
 
     </main>
