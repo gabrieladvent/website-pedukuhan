@@ -68,6 +68,15 @@ Route::group([
         Route::post('admin/edit-posting/proses', [PostingController::class, 'updatePostingProses'])->name('edit-proses');
         Route::get('admin/delete-posting/{slug}/{kode_user}', [PostingController::class, 'deletepost'])->name('delete-post');
 
+
+        Route::get('admin/delete-posting/{slug}/{kode_user}', [PostingController::class, 'deletepost'])->name('delete-post');
+        Route::get('admin/delete-posting/{slug}/{kode_user}', [PostingController::class, 'deletepost'])->name('delete-post');
+        Route::get('admin/delete-posting/{slug}/{kode_user}', [PostingController::class, 'deletepost'])->name('delete-post');
+        Route::get('admin/delete-posting/{slug}/{kode_user}', [PostingController::class, 'deletepost'])->name('delete-post');
+        Route::get('admin/delete-posting/{slug}/{kode_user}', [PostingController::class, 'deletepost'])->name('delete-post');
+        Route::get('admin/delete-posting/{slug}/{kode_user}', [PostingController::class, 'deletepost'])->name('delete-post');
+
+
     Route::get('logout', [dashboardController::class, 'logout'])->name('logout');
     });
 });
