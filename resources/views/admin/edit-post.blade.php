@@ -12,12 +12,13 @@
             </div>
         @endif
         <p class="mb-3 fs-3 fw-bold text-dark"><i class="fa-solid fa-file-word"></i> Edit Postingan</p>
-        <form action="#" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('edit-proses') }}" method="POST" enctype="multipart/form-data">
             @csrf
+            <input type="text" name="id" value="{{ $post->id }}" hidden>
             <div class="mb-3">
                 <label for="title" class="form-label">Judul Tulisan</label>
                 <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
-                    placeholder="Masukan Judul" name="title" required autofocus value="{{ $post->title }}"">
+                    placeholder="Masukan Judul" name="title" required autofocus value="{{ $post->title }}">
                 @error('title')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -45,46 +46,72 @@
             </div>
 
             <div class="mb-4">
-                <label for="body" class="form-label">Dokumentasi</label>
-                <div class="row">
-                    @foreach (['foto_satu', 'foto_dua', 'foto_tiga', 'foto_empat', 'foto_lima'] as $foto)
-                        <div class="col-md-4">
-                            @php
-                                $photoUrl = asset('storage/' . $post->$foto);
-                            @endphp
-
-                            @if ($post->$foto)
-                                <img src="{{ $photoUrl }}" alt="{{ $foto }}" class="img-fluid" width="50%">
-                            @endif
-
-                            <div class="mt-2">
-                                <label for="{{ $foto }}" class="form-label">Ubah
-                                    {{ ucfirst(str_replace('_', ' ', $foto)) }}</label>
-                                <input type="file" name="{{ $foto }}" id="{{ $foto }}"
-                                    accept="image/png, image/jpeg, image/jpg"
-                                    onchange="previewImage(this, '{{ $foto }}_preview')">
-                                <img id="{{ $foto }}_preview" src="{{ $photoUrl }}"
-                                    alt="{{ $foto }} Preview"
-                                    style="display: none; max-width: 100px; max-height: 100px;">
-                            </div>
+                <div class="row gx-5">
+                    <div class="col">
+                        <div class="p-3 d-flex flex-column align-items-center">
+                            <input type="file" name="foto_satu" id="foto_satu" accept="image/png, image/jpeg, image/jpg">
+                            <br>
+                            <img id="imagePreview_satu" src="{{ asset('storage/' . $post->foto_satu) }}" alt="Preview"
+                                style="max-width: 250px; max-height: 250px; @if (!$post->foto_satu) display: none; @endif">
                         </div>
-                    @endforeach
+
+
+                    </div>
+                    <div class="col">
+                        <div class="p-3 d-flex flex-column align-items-center">
+                            <input type="file" name="foto_dua" id="foto_dua" accept="image/png, image/jpeg, image/jpg">
+                            <br>
+                            <img id="imagePreview_dua" src="{{ asset('storage/' . $post->foto_dua) }}" alt="Preview"
+                                style="max-width: 250px; max-height: 250px; @if (!$post->foto_dua) display: none; @endif">
+                        </div>
+
+
+                    </div>
                 </div>
             </div>
 
+            <div class="mb-4">
+                <div class="row gx-5">
+                    <div class="col">
+                        <div class="p-3 d-flex flex-column align-items-center">
+                            <input type="file" name="foto_tiga" id="foto_tiga" accept="image/png, image/jpeg, image/jpg">
+                            <br>
+                            <img id="imagePreview_tiga" src="{{ asset('storage/' . $post->foto_tiga) }}" alt="Preview"
+                                style="max-width: 250px; max-height: 250px; @if (!$post->foto_tiga) display: none; @endif">
+                        </div>
+
+
+                    </div>
+                    <div class="col">
+                        <div class="p-3 d-flex flex-column align-items-center">
+                            <input type="file" name="foto_empat" id="foto_empat" accept="image/png, image/jpeg, image/jpg">
+                            <br>
+                            <img id="imagePreview_empat" src="{{ asset('storage/' . $post->foto_empat) }}" alt="Preview"
+                                style="max-width: 250px; max-height: 250px; @if (!$post->foto_empat) display: none; @endif">
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
 
             <div class="container px-4 text-center">
                 <div class="row gx-5">
                     <div class="col">
                         <div class="p-3 d-flex flex-column align-items-center">
+                            <input type="file" name="foto_lima" id="foto_lima" accept="image/png, image/jpeg, image/jpg">
+                            <br>
+                            <img id="imagePreview_lima" src="{{ asset('storage/' . $post->foto_lima) }}" alt="Preview"
+                                style="max-width: 250px; max-height: 250px; @if (!$post->foto_lima) display: none; @endif">
 
                         </div>
                     </div>
 
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button class="btn btn-danger me-md-2" type="button"><i class="fa-solid fa-ban"></i> Batal</button>
-                        <button class="btn btn-success" type="submit"><i class="fa-solid fa-paper-plane"></i>
-                            Upload</button>
+                        <button class="btn btn-danger me-md-2" type="button"><i class="fa-solid fa-ban"></i>
+                            Batal</button>
+                        <button class="btn btn-success" type="submit"><i class="fa-solid fa-rotate"></i>
+                            Update</button>
                     </div>
                 </div>
             </div>
@@ -92,21 +119,21 @@
     </main>
 
     <script>
-        function previewImage(input, previewId) {
-            const preview = document.getElementById(previewId);
-            if (input.files && input.files[0]) {
+        const inputFiles = document.querySelectorAll('input[type="file"]');
+        const imagePreviews = document.querySelectorAll('img[id^="imagePreview"]');
+
+        inputFiles.forEach((inputFile, index) => {
+            inputFile.addEventListener('change', function(event) {
+                const file = event.target.files[0];
                 const reader = new FileReader();
 
                 reader.onload = function(e) {
-                    preview.style.display = 'block';
-                    preview.src = e.target.result;
-                }
+                    imagePreviews[index].src = e.target.result;
+                    imagePreviews[index].style.display = 'block';
+                };
 
-                reader.readAsDataURL(input.files[0]);
-            } else {
-                preview.style.display = 'none';
-                preview.src = '#';
-            }
-        }
+                reader.readAsDataURL(file);
+            });
+        });
     </script>
 @endsection

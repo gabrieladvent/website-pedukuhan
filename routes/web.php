@@ -65,6 +65,8 @@ Route::group([
         Route::get('admin/daftar-postingan', [PostingController::class, 'daftar_posting'])->name('daftar-post');
         Route::get('admin/detail-posting/{slug}/{kode_user}', [PostingController::class, 'showPosting'])->name('show-post');
         Route::get('admin/edit-posting/{slug}/{kode_user}', [PostingController::class, 'editPosting'])->name('edit-post');
+        Route::post('admin/edit-posting/proses', [PostingController::class, 'updatePostingProses'])->name('edit-proses');
+        Route::get('admin/delete-posting/{slug}/{kode_user}', [PostingController::class, 'deletepost'])->name('delete-post');
 
     Route::get('logout', [dashboardController::class, 'logout'])->name('logout');
     });

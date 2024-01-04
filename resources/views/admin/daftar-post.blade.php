@@ -40,18 +40,43 @@
                             @endforeach
                             <td class="text-wrap">{{ $post->headline }}</td>
                             <td>
-                                <a href="{{ route('show-post', ['slug' => $post->slug, 'kode_user' => $post->kode_user]) }}" class="btn btn-info"><i class="fa-solid fa-eye"></i></a>
+                                <a href="{{ route('show-post', ['slug' => $post->slug, 'kode_user' => $post->kode_user]) }}"
+                                    class="btn btn-info"><i class="fa-solid fa-eye"></i></a>
                             </td>
                             <td>
-                                <a href="{{ route('edit-post', ['slug' => $post->slug, 'kode_user' => $post->kode_user]) }}" class="btn btn-dark"><i class="fa-solid fa-pencil"></i></a>
+                                <a href="{{ route('edit-post', ['slug' => $post->slug, 'kode_user' => $post->kode_user]) }}"
+                                    class="btn btn-dark"><i class="fa-solid fa-pencil"></i></a>
                             </td>
                             <td>
-                                <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal" data-bs-whatever="@mdo"><i class="fa-solid fa-trash"></i></button>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Konfirmasi</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="fs-4">Apakah anda yakin ingin menghapus???</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        @if (count($posting) >= 1)
+                            <a href="{{ route('delete-post', ['slug' => $post->slug, 'kode_user' => $post->kode_user]) }}"
+                                class="btn btn-danger">Hapus</a>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     </main>
 @endsection

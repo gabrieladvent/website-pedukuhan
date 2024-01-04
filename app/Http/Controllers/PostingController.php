@@ -92,7 +92,6 @@ class PostingController extends Controller
 
     public function editPosting($slug, $kode_user)
     {
-        // dd($slug, $kode_user);
         $user = Auth::user();
         $post = postingModel::where('slug', $slug)
             ->where('kode_user', $kode_user)
@@ -110,5 +109,75 @@ class PostingController extends Controller
         $kategories = kategoriModel::all();
 
         return view('admin.edit-post', compact('user', 'post', 'users', 'kategori', 'kategories'));
+    }
+
+    public function updatePostingProses(Request $request)
+    {
+        try {
+            $postId = $request->input('id');
+            $post = PostingModel::findOrFail($postId);
+
+            $validateData = $request->validate([
+                'title' => 'required|max:255',
+                'id_kategori' => 'required',
+                'body' => 'required',
+                'foto_satu' => 'nullable|image|mimes:jpeg,png,jpg|max:5048',
+                'foto_dua' => 'nullable|image|mimes:jpeg,png,jpg|max:5048',
+                'foto_tiga' => 'nullable|image|mimes:jpeg,png,jpg|max:5048',
+                'foto_empat' => 'nullable|image|mimes:jpeg,png,jpg|max:5048',
+                'foto_lima' => 'nullable|image|mimes:jpeg,png,jpg|max:5048',
+            ]);
+
+            $fotoPaths = [];
+            $fotoNames = ['foto_satu', 'foto_dua', 'foto_tiga', 'foto_empat', 'foto_lima'];
+            $fotoUpdated = false;
+
+            foreach ($fotoNames as $fotoName) {
+                if ($request->hasFile($fotoName)) {
+                    $foto = $request->file($fotoName);
+                    $namaFile = time() . '_' . $foto->getClientOriginalName();
+                    $lokasiSimpan = 'public/imagePost/';
+
+                    $foto->storeAs($lokasiSimpan, $namaFile);
+                    $fotoPaths[$fotoName] = 'imagePost/' . $namaFile;
+
+                    if ($post->$fotoName && file_exists(storage_path('app/public/' . $post->$fotoName))) {
+                        unlink(storage_path('app/public/' . $post->$fotoName));
+                    }
+                    $fotoUpdated = true;
+                }
+            }
+
+            if ($fotoUpdated) {
+                $validateData = array_merge($validateData, $fotoPaths);
+                $post->update($validateData);
+
+                return redirect()->route('daftar-post')->with('success', 'Post berhasil diperbarui!');
+            } else {
+                $post->update($validateData);
+                return redirect()->route('daftar-post')->with('success', 'Post berhasil diperbarui tanpa mengubah foto!');
+            }
+        } catch (\Throwable $e) {
+            return redirect()->back()->with('error', 'Gagal mengupload foto. Pesan error: ' . $e->getMessage());
+        }
+    }
+
+    public function deletepost($slug, $kode_user)
+    {
+        try {
+            $post = PostingModel::where('slug', $slug)
+                ->where('kode_user', $kode_user)
+                ->first();
+
+            if (!$post) {
+                return redirect()->back()->with('error', 'Postingan tidak ditemukan.');
+            }
+
+            $post->delete();
+
+            return redirect()->route('daftar-post')->with('success', 'Post berhasil dihapus.');
+        } catch (\Throwable $e) {
+            return redirect()->back()->with('error', 'Gagal menghapus postingan. Pesan error: ' . $e->getMessage());
+        }
     }
 }

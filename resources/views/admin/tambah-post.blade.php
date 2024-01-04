@@ -52,7 +52,7 @@
                     <div class="col">
                         <div class="p-3 d-flex flex-column align-items-center">
                             <img id="preview_foto_satu" src="#" alt="Preview Foto"
-                                style="display: none; max-width: 100px; max-height: 100px;">
+                                style="display: none; max-width: 250px; max-height: 250px;">
                             <input type="file" name="foto_satu" id="foto_satu" accept="image/png, image/jpeg, image/jpg">
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                     <div class="col">
                         <div class="p-3 d-flex flex-column align-items-center">
                             <img id="preview_foto_dua" src="#" alt="Preview Foto"
-                                style="display: none; max-width: 100px; max-height: 100px;">
+                                style="display: none; max-width: 250px; max-height: 250px;">
                             <input type="file" name="foto_dua" id="foto_dua" accept="image/png, image/jpeg, image/jpg">
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                     <div class="col">
                         <div class="p-3 d-flex flex-column align-items-center">
                             <img id="preview_foto_tiga" src="#" alt="Preview Foto"
-                                style="display: none; max-width: 100px; max-height: 100px;">
+                                style="display: none; max-width: 250px; max-height: 250px;">
                             <input type="file" name="foto_tiga" id="foto_tiga" accept="image/png, image/jpeg, image/jpg">
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                     <div class="col">
                         <div class="p-3 d-flex flex-column align-items-center">
                             <img id="preview_foto_empat" src="#" alt="Preview Foto"
-                                style="display: none; max-width: 100px; max-height: 100px;">
+                                style="display: none; max-width: 250px; max-height: 250px;">
                             <input type="file" name="foto_empat" id="foto_empat"
                                 accept="image/png, image/jpeg, image/jpg">
                         </div>
@@ -93,7 +93,7 @@
                     <div class="col">
                         <div class="p-3 d-flex flex-column align-items-center">
                             <img id="preview_foto_lima" src="#" alt="Preview Foto"
-                                style="display: none; max-width: 100px; max-height: 100px;">
+                                style="display: none; max-width: 250px; max-height: 250px;">
                             <input type="file" name="foto_lima" id="foto_lima" accept="image/png, image/jpeg, image/jpg">
                         </div>
                     </div>
