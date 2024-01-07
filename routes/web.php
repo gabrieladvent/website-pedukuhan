@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginModelController;
 use App\Http\Controllers\PostingController;
 use App\Http\Controllers\UserController;
@@ -59,8 +60,8 @@ Route::group([
     ], function () {
         Route::get('dashboard/admin', [dashboardController::class, 'index'])->name('dashboard-admin');
 
-        Route::get('add/post/admin', [PostingController::class, 'index'])->name('post-view');
-        Route::post('add/post/admin/upload', [PostingController::class, 'addPost'])->name('post-proses');
+        Route::get('admin/add/post/admin', [PostingController::class, 'index'])->name('post-view');
+        Route::post('admin/add/post/admin/upload', [PostingController::class, 'addPost'])->name('post-proses');
 
         Route::get('admin/daftar-postingan', [PostingController::class, 'daftar_posting'])->name('daftar-post');
         Route::get('admin/detail-posting/{slug}/{kode_user}', [PostingController::class, 'showPosting'])->name('show-post');
@@ -68,14 +69,9 @@ Route::group([
         Route::post('admin/edit-posting/proses', [PostingController::class, 'updatePostingProses'])->name('edit-proses');
         Route::get('admin/delete-posting/{slug}/{kode_user}', [PostingController::class, 'deletepost'])->name('delete-post');
 
-
-        Route::get('admin/delete-posting/{slug}/{kode_user}', [PostingController::class, 'deletepost'])->name('delete-post');
-        Route::get('admin/delete-posting/{slug}/{kode_user}', [PostingController::class, 'deletepost'])->name('delete-post');
-        Route::get('admin/delete-posting/{slug}/{kode_user}', [PostingController::class, 'deletepost'])->name('delete-post');
-        Route::get('admin/delete-posting/{slug}/{kode_user}', [PostingController::class, 'deletepost'])->name('delete-post');
-        Route::get('admin/delete-posting/{slug}/{kode_user}', [PostingController::class, 'deletepost'])->name('delete-post');
-        Route::get('admin/delete-posting/{slug}/{kode_user}', [PostingController::class, 'deletepost'])->name('delete-post');
-
+        Route::get('admin/kategori/CRUD', [KategoriController::class, 'index'])->name('crud-kategori');
+        Route::post('admin/add/kategori', [KategoriController::class, 'addKategori'])->name('add-kategori');
+        Route::post('admin/kategori/edit/proses', [KategoriController::class, 'editProses'])->name('edit-kategori');
 
     Route::get('logout', [dashboardController::class, 'logout'])->name('logout');
     });

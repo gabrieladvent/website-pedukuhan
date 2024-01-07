@@ -57,6 +57,11 @@
             </a>
             <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
+                    <a href="{{ route('crud-kategori') }}">
+                        <i class="bi bi-circle"></i><span>Kategori</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('post-view') }}">
                         <i class="bi bi-circle"></i><span>Tambah Cerita</span>
                     </a>

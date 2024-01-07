@@ -29,7 +29,7 @@ class UserController extends Controller
         // $kode_user = 'adm-' . $first_name . '-' . $last_name . '-' . $random_number;
         $slug = Str::slug($first_name . '-' . $last_name);
 
-        // try {
+        try {
             $user = new User();
             // $user->kode_user = $kode_user;
             $user->first_name = $first_name;
@@ -40,8 +40,8 @@ class UserController extends Controller
             $user->save();
 
             return redirect()->route('login')->with('success', 'Akun Berhasil Terdaftar');
-        // } catch (Exception $e) {
-        //     return redirect()->route('login')->with('error', 'Registrasi Gagal');
-        // }
+        } catch (Exception $e) {
+            return redirect()->route('login')->with('error', 'Registrasi Gagal');
+        }
     }
 }

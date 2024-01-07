@@ -164,6 +164,7 @@ class PostingController extends Controller
 
     public function deletepost($slug, $kode_user)
     {
+        dd($slug, $kode_user);
         try {
             $post = PostingModel::where('slug', $slug)
                 ->where('kode_user', $kode_user)
