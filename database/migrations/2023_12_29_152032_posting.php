@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('kode_user')->nullable();
             $table->string('headline');
             $table->unsignedBigInteger('id_kategori')->nullable();
+            $table->unsignedBigInteger('id_sub')->nullable();
             $table->text('body');
             $table->string('foto_satu')->nullable();
             $table->string('foto_dua')->nullable();
@@ -34,6 +35,11 @@ return new class extends Migration
             $table->foreign('id_kategori')
                 ->references('id')
                 ->on('kategori')
+                ->onDelete('cascade');
+
+            $table->foreign('id_sub')
+                ->references('id')
+                ->on('item_sub')
                 ->onDelete('cascade');
         });
         

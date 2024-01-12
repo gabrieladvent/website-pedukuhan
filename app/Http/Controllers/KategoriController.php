@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\kategoriModel;
+use App\Models\SubKategoriModel;
 use Illuminate\Support\Facades\Auth;
 
 class KategoriController extends Controller
@@ -14,8 +15,9 @@ class KategoriController extends Controller
         $user = Auth::user();
         $kategori = kategoriModel::all();
         $users = User::all();
+        $sub = SubKategoriModel::all();
 
-        return view('admin.CRUD-kategori', compact('user', 'kategori', 'users'));
+        return view('admin.CRUD-kategori', compact('user', 'kategori', 'users', 'sub'));
     }
 
     public function addKategori(Request $request)

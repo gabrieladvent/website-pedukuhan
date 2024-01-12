@@ -16,4 +16,9 @@ class kategoriModel extends Model
     public function postings() {
         return $this->hasMany(PostingModel::class, 'id_kategori');
     }
+
+    public function subKategoris()
+    {
+        return $this->hasMany(SubKategoriModel::class, 'id_kategori', 'id');
+    }
 }

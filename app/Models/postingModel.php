@@ -14,7 +14,7 @@ class postingModel extends Model
     protected $table = 'posting';
 
     protected $fillable = [
-            'title', 'slug', 'kode_user', 'headline', 'id_kategori', 'body', 'foto_satu', 'foto_dua', 'foto_tiga', 'foto_empat', 'foto_lima',
+            'title', 'slug', 'kode_user', 'headline', 'id_kategori', 'id_sub', 'body', 'foto_satu', 'foto_dua', 'foto_tiga', 'foto_empat', 'foto_lima',
     ];
 
     public function sluggable(): array
@@ -28,6 +28,11 @@ class postingModel extends Model
 
     public function kategori() {
         return $this->belongsTo(KategoriModel::class, 'id');
+    }
+
+    public function subKategori()
+    {
+        return $this->belongsTo(SubKategoriModel::class, 'id_sub', 'id');
     }
 
     public function users() {

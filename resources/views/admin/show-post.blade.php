@@ -27,11 +27,26 @@
                 @endif
             @endforeach
         </div>
-        <div class="mb-3">
-            <label for="title" class="form-label">Kategori</label>
-            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
-                placeholder="Masukan Judul" name="title" readonly value="{{ $post->kategori->kategori_name }}">
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Kategori</label>
+                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
+                        placeholder="Masukan Judul" name="title" readonly value="{{ $post->kategori->kategori_name }}">
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Sub Kategori</label>
+                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
+                        placeholder="Tidak Ada Sub Kategori" name="title" readonly
+                        value="{{ optional($post->subKategori)->sub_name }}">
+                </div>
+
+            </div>
         </div>
+
         <div class="mb-3">
             <label for="body" class="form-label">Body</label>
             <textarea id="body" name="body" style="display: none;">{{ $post->body }}</textarea>

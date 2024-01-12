@@ -16,28 +16,46 @@
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Judul Tulisan</label>
-                <input type="text" class="form-control @error('title') is-invalid @enderror"
-                    id="title" placeholder="Masukan Judul" name="title" required autofocus value="{{ old('title') }}">
+                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
+                    placeholder="Masukan Judul" name="title" required autofocus value="{{ old('title') }}">
                 @error('title')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
                 @enderror
             </div>
-            <div class="mb-3">
-                <label for="kategori" class="form-label">Kategori</label>
-                <select class="form-select bg-transparent" name="id_kategori">
-                    @foreach ($kategori as $item)
-                    @if (old('kategori_id') == $item->id)
-                        <option value="{{ $item->id }}" selected>{{ $item->kategori_name }}</option>
-                    @else
-                    <option value="{{ $item->id }}">{{ $item->kategori_name }}</option>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="kategori" class="form-label">Kategori</label>
+                        <select class="form-select bg-transparent" name="id_kategori">
+                            @foreach ($kategori as $item)
+                                @if (old('kategori_id') == $item->id)
+                                    <option value="{{ $item->id }}" selected>{{ $item->kategori_name }}</option>
+                                @else
+                                    <option value="{{ $item->id }}">{{ $item->kategori_name }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
 
-                    @endif
-                        
-                    @endforeach
-                </select>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="id_sub" class="form-label">Sub Kategori</label>
+                        <select class="form-select bg-transparent" name="id_sub" disabled>
+                            @foreach ($sub as $item)
+                                @if (old('id_sub') == $item->id)
+                                    <option value="{{ $item->id }}" selected>{{ $item->sub_name }}</option>
+                                @else
+                                    <option value="{{ $item->id }}">{{ $item->sub_name }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
             </div>
+
             <div class="mb-3">
                 <label for="body" class="form-label">Body</label>
                 @error('body')
@@ -94,7 +112,8 @@
                         <div class="p-3 d-flex flex-column align-items-center">
                             <img id="preview_foto_lima" src="#" alt="Preview Foto"
                                 style="display: none; max-width: 250px; max-height: 250px;">
-                            <input type="file" name="foto_lima" id="foto_lima" accept="image/png, image/jpeg, image/jpg">
+                            <input type="file" name="foto_lima" id="foto_lima"
+                                accept="image/png, image/jpeg, image/jpg">
                         </div>
                     </div>
                 </div>
@@ -109,7 +128,8 @@
                     </div>
 
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button class="btn btn-danger me-md-2" type="button"><i class="fa-solid fa-ban"></i> Batal</button>
+                        <button class="btn btn-danger me-md-2" type="button"><i class="fa-solid fa-ban"></i>
+                            Batal</button>
                         <button class="btn btn-success" type="submit"><i class="fa-solid fa-paper-plane"></i>
                             Upload</button>
                     </div>
@@ -151,6 +171,19 @@
         });
         document.getElementById('foto_lima').addEventListener('change', function() {
             previewImage(this, 'preview_foto_lima');
+        });
+
+
+        const kategoriSelect = document.querySelector('select[name="id_kategori"]');
+        const subSelect = document.querySelector('select[name="id_sub"]');
+
+        kategoriSelect.addEventListener('change', function() {
+            const selectedValue = parseInt(this.value);
+            if (selectedValue === 3) {
+                subSelect.disabled = false;
+            } else {
+                subSelect.disabled = true;
+            }
         });
     </script>
 @endsection

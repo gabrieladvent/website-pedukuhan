@@ -25,16 +25,30 @@
                     </div>
                 @enderror
             </div>
-            <div class="mb-3">
-                <label for="kategori" class="form-label">Kategori</label>
-                <select class="form-select bg-transparent" name="id_kategori">
-                    @foreach ($kategories as $item)
-                        <option value="{{ $item->id }}" @if ($post->id_kategori == $item->id) selected @endif>
-                            {{ $item->kategori_name }}
-                        </option>
-                    @endforeach
-                </select>
+            <div class="row mb-3">
+                <div class="col">
+                        <label for="kategori" class="form-label">Kategori</label>
+                        <select class="form-select bg-transparent" name="id_kategori">
+                            @foreach ($kategories as $item)
+                                <option value="{{ $item->id }}" @if ($post->id_kategori == $item->id) selected @endif>
+                                    {{ $item->kategori_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                </div>
+
+                <div class="col">
+                        <label for="id_sub" class="form-label">Sub Kategori</label>
+                        <select class="form-select bg-transparent" name="id_sub">
+                            @foreach ($subs as $item)
+                                <option value="{{ $item->id }}" @if ($post->id_sub == $item->id) selected @endif>
+                                    {{ $item->sub_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                </div>
             </div>
+
 
             <div class="mb-3">
                 <label for="body" class="form-label">Body</label>
@@ -84,7 +98,8 @@
                     </div>
                     <div class="col">
                         <div class="p-3 d-flex flex-column align-items-center">
-                            <input type="file" name="foto_empat" id="foto_empat" accept="image/png, image/jpeg, image/jpg">
+                            <input type="file" name="foto_empat" id="foto_empat"
+                                accept="image/png, image/jpeg, image/jpg">
                             <br>
                             <img id="imagePreview_empat" src="{{ asset('storage/' . $post->foto_empat) }}" alt="Preview"
                                 style="max-width: 250px; max-height: 250px; @if (!$post->foto_empat) display: none; @endif">
@@ -134,6 +149,18 @@
 
                 reader.readAsDataURL(file);
             });
+        });
+
+        const kategoriSelect = document.querySelector('select[name="id_kategori"]');
+        const subSelect = document.querySelector('select[name="id_sub"]');
+
+        kategoriSelect.addEventListener('change', function() {
+            const selectedValue = parseInt(this.value);
+            if (selectedValue === 3) {
+                subSelect.disabled = false;
+            } else {
+                subSelect.disabled = true;
+            }
         });
     </script>
 @endsection

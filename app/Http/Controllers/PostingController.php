@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\kategoriModel;
 use App\Models\postingModel;
+use App\Models\SubKategoriModel;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -16,7 +17,8 @@ class PostingController extends Controller
     {
         $user = Auth::user();
         $kategori = kategoriModel::all();
-        return view('admin.tambah-post', compact('user', 'kategori'));
+        $sub = SubKategoriModel::all();
+        return view('admin.tambah-post', compact('user', 'kategori', 'sub'));
     }
 
     public function daftar_posting()
@@ -25,7 +27,8 @@ class PostingController extends Controller
         $posting = postingModel::all();
         $kategori = kategoriModel::all();
         $users = User::all();
-        return view('admin.daftar-post', compact('user', 'posting', 'kategori', 'users'));
+        $sub = SubKategoriModel::all();
+        return view('admin.daftar-post', compact('user', 'posting', 'kategori', 'users', 'sub'));
     }
 
     public function addPost(Request $request)
@@ -44,6 +47,9 @@ class PostingController extends Controller
 
             $validateData['kode_user'] = Auth::user()->id;
             $validateData['headline'] = Str::limit(strip_tags($request->body), 100, '...');
+            if($request->id_kategori != 3){
+                $validateData['id_sub'] = null;
+            }
 
             $fotoPaths = [];
 
@@ -86,6 +92,7 @@ class PostingController extends Controller
 
         $users = User::where('id', $kode_user)->get(); // Mengambil koleksi user
         $kategori = kategoriModel::find($post->id_kategori);
+        $sub = SubKategoriModel::find($post->id_sub);
 
         return view('admin.show-post', compact('user', 'post', 'users', 'kategori'));
     }
@@ -106,9 +113,11 @@ class PostingController extends Controller
 
         $users = User::where('id', $kode_user)->get(); // Mengambil koleksi user
         $kategori = kategoriModel::find($post->id_kategori);
+        $sub = SubKategoriModel::find($post->id_sub);
         $kategories = kategoriModel::all();
+        $subs = SubKategoriModel::all();
 
-        return view('admin.edit-post', compact('user', 'post', 'users', 'kategori', 'kategories'));
+        return view('admin.edit-post', compact('user', 'post', 'users', 'kategori', 'kategories', 'sub', 'subs'));
     }
 
     public function updatePostingProses(Request $request)
@@ -120,6 +129,7 @@ class PostingController extends Controller
             $validateData = $request->validate([
                 'title' => 'required|max:255',
                 'id_kategori' => 'required',
+                'id_sub' => 'nullable',
                 'body' => 'required',
                 'foto_satu' => 'nullable|image|mimes:jpeg,png,jpg|max:5048',
                 'foto_dua' => 'nullable|image|mimes:jpeg,png,jpg|max:5048',
@@ -146,6 +156,10 @@ class PostingController extends Controller
                     }
                     $fotoUpdated = true;
                 }
+            }
+
+            if($request->id_kategori != 3){
+                $validateData['id_sub'] = null;
             }
 
             if ($fotoUpdated) {

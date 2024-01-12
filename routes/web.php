@@ -4,6 +4,7 @@ use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginModelController;
 use App\Http\Controllers\PostingController;
+use App\Http\Controllers\SubController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckDevice;
 use App\Http\Middleware\IsAdmin;
@@ -72,6 +73,9 @@ Route::group([
         Route::get('admin/kategori/CRUD', [KategoriController::class, 'index'])->name('crud-kategori');
         Route::post('admin/add/kategori', [KategoriController::class, 'addKategori'])->name('add-kategori');
         Route::post('admin/kategori/edit/proses', [KategoriController::class, 'editProses'])->name('edit-kategori');
+
+        Route::post('admin/kategori/add/sub-kategori', [SubController::class, 'addSubKategori'])->name('add-sub');
+        Route::post('admin/kategori/edit/sub-kategori/proses', [SubController::class, 'editSubKategori'])->name('edit-sub');
 
     Route::get('logout', [dashboardController::class, 'logout'])->name('logout');
     });
