@@ -32,7 +32,6 @@ class LoginModelController extends Controller
 
         if(Auth::attempt($credentials)){
             $user = Auth::user();
-            // dump($user,session()->all());
             $request->session()->regenerate();
             return redirect()->intended('dashboard/admin');
         }

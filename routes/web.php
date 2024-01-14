@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\leadingController;
 use App\Http\Controllers\LoginModelController;
 use App\Http\Controllers\PostingController;
 use App\Http\Controllers\SubController;
@@ -23,25 +24,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $longitude = -8.0860096;
-    $latitude = 110.7109651;
-    return view('leading', compact('longitude', 'latitude'));
-})->name('home');
-
-
-Route::get('rakyat', function () {
-    return view('cerita-rakyat-view');
-})->name('rakyat');
-
-Route::get('kearifan-lokal', function () {
-    return view('kearifan-lokal-view');
-})->name('kearifan');
-
-Route::get('kegiatan-masyarakat', function () {
-    return view('kegiatan-view');
-})->name('kegiatan');
-
+Route::get('/', [leadingController::class, 'index'])->name('home');
+Route::get('kegiatan-masyarakat', [leadingController::class, 'kegiatan_masyarakat'])->name('kegiatan'); 
+Route::get('rakyat', [leadingController::class, 'kearifan_lokal'])->name('kearifan');
+Route::get('kearifan-lokal', [leadingController::class, 'profile_weru'])->name('profile');
+Route::post('send-message', [leadingController::class, 'send_messege'])->name('messege');
 
 Route::group([
     'middleware' => CheckDevice::class

@@ -32,7 +32,7 @@
                     @foreach ($posting as $post)
                         <tr>
                             <td>{{ $post->title }}</td>
-                            <td>{{ $post->kategori->kategori_name }}</td>
+                            <td>{{ optional($post->kategori)->kategori_name }}</td>
                             @foreach ($users as $user)
                                 @if ($post->kode_user == $user->id)
                                     <td>{{ $user->first_name . ' ' . $user->last_name }}</td>

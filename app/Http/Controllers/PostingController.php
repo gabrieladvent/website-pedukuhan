@@ -15,20 +15,22 @@ class PostingController extends Controller
 {
     public function index()
     {
+        $title = 'Tambah Postingan';
         $user = Auth::user();
         $kategori = kategoriModel::all();
         $sub = SubKategoriModel::all();
-        return view('admin.tambah-post', compact('user', 'kategori', 'sub'));
+        return view('admin.tambah-post', compact('user', 'kategori', 'sub', 'title'));
     }
 
     public function daftar_posting()
     {
+        $title = 'Daftar Postingan';
         $user = Auth::user();
         $posting = postingModel::all();
         $kategori = kategoriModel::all();
         $users = User::all();
         $sub = SubKategoriModel::all();
-        return view('admin.daftar-post', compact('user', 'posting', 'kategori', 'users', 'sub'));
+        return view('admin.daftar-post', compact('user', 'posting', 'kategori', 'users', 'sub', 'title'));
     }
 
     public function addPost(Request $request)
@@ -47,8 +49,10 @@ class PostingController extends Controller
 
             $validateData['kode_user'] = Auth::user()->id;
             $validateData['headline'] = Str::limit(strip_tags($request->body), 100, '...');
-            if($request->id_kategori != 3){
+            if($request->id_kategori != 2){
                 $validateData['id_sub'] = null;
+            }else{
+                $validateData['id_sub'] = $request->id_sub;
             }
 
             $fotoPaths = [];
@@ -81,6 +85,7 @@ class PostingController extends Controller
 
     public function showPosting($slug, $kode_user)
     {
+        $title = 'Postingan';
         $user = Auth::user();
         $post = postingModel::where('slug', $slug)
             ->where('kode_user', $kode_user)
@@ -94,11 +99,12 @@ class PostingController extends Controller
         $kategori = kategoriModel::find($post->id_kategori);
         $sub = SubKategoriModel::find($post->id_sub);
 
-        return view('admin.show-post', compact('user', 'post', 'users', 'kategori'));
+        return view('admin.show-post', compact('user', 'post', 'users', 'kategori', 'title'));
     }
 
     public function editPosting($slug, $kode_user)
     {
+        $title = 'Edit Postingan';
         $user = Auth::user();
         $post = postingModel::where('slug', $slug)
             ->where('kode_user', $kode_user)
@@ -117,7 +123,7 @@ class PostingController extends Controller
         $kategories = kategoriModel::all();
         $subs = SubKategoriModel::all();
 
-        return view('admin.edit-post', compact('user', 'post', 'users', 'kategori', 'kategories', 'sub', 'subs'));
+        return view('admin.edit-post', compact('user', 'post', 'users', 'kategori', 'kategories', 'sub', 'subs', 'title'));
     }
 
     public function updatePostingProses(Request $request)

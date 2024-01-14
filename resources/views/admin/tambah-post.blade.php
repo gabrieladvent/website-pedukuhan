@@ -128,8 +128,8 @@
                     </div>
 
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button class="btn btn-danger me-md-2" type="button"><i class="fa-solid fa-ban"></i>
-                            Batal</button>
+                        <a href="{{ route('daftar-post') }}" class="btn btn-danger me-md-2"><i class="fa-solid fa-ban"></i>
+                            Batal</a>
                         <button class="btn btn-success" type="submit"><i class="fa-solid fa-paper-plane"></i>
                             Upload</button>
                     </div>
@@ -179,7 +179,7 @@
 
         kategoriSelect.addEventListener('change', function() {
             const selectedValue = parseInt(this.value);
-            if (selectedValue === 3) {
+            if (selectedValue === 2) {
                 subSelect.disabled = false;
             } else {
                 subSelect.disabled = true;

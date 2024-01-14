@@ -12,12 +12,13 @@ class KategoriController extends Controller
 {
     public function index()
     {
+        $title = 'Kategori';
         $user = Auth::user();
         $kategori = kategoriModel::all();
         $users = User::all();
         $sub = SubKategoriModel::all();
 
-        return view('admin.CRUD-kategori', compact('user', 'kategori', 'users', 'sub'));
+        return view('admin.CRUD-kategori', compact('user', 'kategori', 'users', 'sub', 'title'));
     }
 
     public function addKategori(Request $request)

@@ -29,6 +29,7 @@
         </div>
     </header>
 
+    {{-- Di dukung --}}
     <section class="py-5">
         <div class="container text-center py-5">
             <p class="mb-4" style="font-size: 1.6rem;">
@@ -47,73 +48,42 @@
         </div>
     </section>
 
+    {{-- cerita kegiatan --}}
     <section>
         <div class="container bg-dark py-5">
             <div class="row">
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
                     <p class="fw-bold text-success mb-2">Cerita Kita</p>
-                    <h3 class="fw-bold">Cerita Rakyat Di Pedukuhan Weru</h3>
+                    <h3 class="fw-bold">Kegiatan Masyarakat Weru x KKN 34</h3>
                 </div>
             </div>
             <div class="py-5 p-lg-5">
                 <div class="row row-cols-1 row-cols-md-2 mx-auto" style="max-width: 900px;">
-                    <div class="col mb-5">
-                        <div class="card shadow-sm">
-                            <div class="card-body px-4 py-5 px-md-5">
-                                <h5 class="fw-bold card-title">Lorem ipsum dolor sit&nbsp;</h5>
-                                <p class="text-muted card-text mb-4">
-                                    Erat netus est hendrerit, nullam et quis ad cras
-                                    porttitor iaculis. Bibendum vulputate cras aenean.
-                                </p>
-                                <button class="btn btn-primary shadow" type="button">Learn more</button>
+                    @foreach ($kegiatan as $item)
+                        <div class="col mb-5">
+                            <div class="card shadow-sm">
+                                <div class="card-body px-4 py-5 px-md-5">
+                                    <h5 class="fw-bold fs-3 card-title">{{ $item->title }}</h5>
+                                    <p class="text-muted card-text mb-4">
+                                        {{ $item->headline }}
+                                    </p>
+                                    <a href="#" class="btn btn-primary shadow">Lanjut Baca</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card shadow-sm">
-                            <div class="card-body px-4 py-5 px-md-5">
-                                <h5 class="fw-bold card-title">Lorem ipsum dolor sit&nbsp;</h5>
-                                <p class="text-muted card-text mb-4">
-                                    Erat netus est hendrerit, nullam et quis ad cras
-                                    porttitor iaculis. Bibendum vulputate cras aenean.
-                                </p>
-                                <button class="btn btn-primary shadow" type="button">Learn more</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-4">
-                        <div class="card shadow-sm">
-                            <div class="card-body px-4 py-5 px-md-5">
-                                <h5 class="fw-bold card-title">Lorem ipsum dolor sit&nbsp;</h5>
-                                <p class="text-muted card-text mb-4">
-                                    Erat netus est hendrerit, nullam et quis ad cras
-                                    porttitor iaculis. Bibendum vulputate cras aenean.
-                                </p>
-                                <button class="btn btn-primary shadow" type="button">Learn more</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-4">
-                        <div class="card shadow-sm">
-                            <div class="card-body px-4 py-5 px-md-5">
-                                <h5 class="fw-bold card-title">Lorem ipsum dolor sit&nbsp;</h5>
-                                <p class="text-muted card-text mb-4">
-                                    Erat netus est hendrerit, nullam et quis ad cras
-                                    porttitor iaculis. Bibendum vulputate cras aenean.
-                                </p>
-                                <button class="btn btn-primary shadow" type="button">more</button>
-                            </div>
-                        </div>
-                        <div class="col mt-3 text-end">
-                            <a href="{{ route('rakyat') }}">See More <i class="fa-regular fa-hand-point-right"></i></a>
-                        </div>
-                    </div>
+                    @endforeach
 
+                    @if (count($kegiatan) > 4)
+                        <div class="col mt-3 text-end">
+                            <a href="{{ route('kearifan') }}">See More <i class="fa-regular fa-hand-point-right"></i></a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
     </section>
 
+    {{-- video profile --}}
     <section>
         <div class="container bg-dark py-5">
             <div class="row">
@@ -131,48 +101,34 @@
         </div>
     </section>
 
+    {{-- kearifan lokal --}}
     <section>
         <div class="container py-5">
             <div class="mx-auto" style="max-width: 900px;">
                 <div class="row row-cols-1 row-cols-md-2 d-flex justify-content-center">
-                    <div class="col mb-4">
-                        <div class="card bg-primary-light">
-                            <div class="card-body text-center px-4 py-5 px-md-5">
-                                <p class="fw-bold text-primary card-text mb-2">Fully Managed</p>
-                                <h5 class="fw-bold card-title mb-3">Lorem ipsum dolor sit&nbsp;nullam et quis ad cras
-                                    porttitor</h5>
-                                <button class="btn btn-primary btn-sm" type="button">Learn more</button>
+                    @foreach ($kearifan as $item)
+                        <div class="col mb-4">
+                            <div class="card bg-primary-light">
+                                <div class="card-body text-center px-4 py-5 px-md-5">
+                                    <p class="fw-bold text-primary card-text mb-2">{{ $item->headline }}</p>
+                                    <h5 class="fw-bold card-title mb-3">{{ $item->title }}</h5>
+                                    <button class="btn btn-primary btn-sm" type="button">Learn more</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col mb-4">
-                        <div class="card bg-secondary-light">
-                            <div class="card-body text-center px-4 py-5 px-md-5">
-                                <p class="fw-bold text-secondary card-text mb-2">Fully Managed</p>
-                                <h5 class="fw-bold card-title mb-3">Lorem ipsum dolor sit&nbsp;nullam et quis ad cras
-                                    porttitor</h5>
-                                <button class="btn btn-secondary btn-sm" type="button">Learn more</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card bg-info-light">
-                            <div class="card-body text-center px-4 py-5 px-md-5">
-                                <p class="fw-bold text-info card-text mb-2">Fully Managed</p>
-                                <h5 class="fw-bold card-title mb-3">Lorem ipsum dolor sit&nbsp;nullam et quis ad cras
-                                    porttitor</h5>
-                                <button class="btn btn-info btn-sm" type="button">Learn more</button>
-                            </div>
-                        </div>
-                        <div class="text-end mt-3 me-2">
+                    @endforeach
+
+                    @if (count($kearifan) > 4)
+                        <div class="col mt-3 text-end">
                             <a href="{{ route('kearifan') }}">See More <i class="fa-regular fa-hand-point-right"></i></a>
                         </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>
     </section>
 
+    {{-- maps --}}
     <section>
         <div class="container bg-dark py-5">
             <div class="row">
@@ -218,7 +174,7 @@
         </div>
     </section>
 
-
+    {{-- developer --}}
     <section class="py-5">
         <div class="container mx-auto py-5">
             <div class="row mb-5">
@@ -228,48 +184,99 @@
                     <h2 class="fw-bold">SANATA DHARMA</h2>
                 </div>
             </div>
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="5000"
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000"
                 data-wrap="true">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="d-flex justify-content-center align-items-center flex-column">
-                            <img class="d-block mx-auto w-25" src="assets/img/products/3.jpg">
+                            <img class="d-block mx-auto w-25" src="{{ asset('assets/img/developer/caesil.jpg') }}">
                             <div class="caption-text text-center mt-3 mb-2">
-                                <h5>Caption 1</h5>
-                                <p>Deskripsi caption 1.</p>
+                                <h4>Caesilia Apri Purwanti</h4>
+                                <p><i class="fa-brands fa-instagram me-1"></i><a href="https://www.instagram.com/caesiliaapr_?igsh=ZXdieGpjNnI1d2dw" target="_blank">caesilliaapr_</a></p>
                             </div>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div class="d-flex justify-content-center align-items-center flex-column">
-                            <img class="d-block mx-auto w-25" src="assets/img/products/3.jpg">
+                            <img class="d-block mx-auto w-25" src="{{ asset('assets/img/developer/nadila.jpg') }}">
                             <div class="caption-text text-center mt-3 mb-2">
-                                <h5>Caption 2</h5>
-                                <p>Deskripsi caption 2.</p>
+                                <h4>Nadilla Diva Maharani</h4>
+                                <p><i class="fa-brands fa-instagram me-1"></i><a href="https://www.instagram.com/nadilladivaa?igsh=bTZ6M2M0OWV2dDNi&utm_source=qr" target="_blank">nadilladivaa</a></p>
                             </div>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div class="d-flex justify-content-center align-items-center flex-column">
-                            <img class="d-block mx-auto w-25" src="assets/img/products/3.jpg">
+                            <img class="d-block mx-auto w-25" src="{{ asset('assets/img/developer/saras.jpg') }}">
                             <div class="caption-text text-center mt-3 mb-2">
-                                <h5>Caption 3</h5>
-                                <p>Deskripsi caption 3.</p>
+                                <h4>Saraswati Devi</h4>
+                                <p><i class="fa-brands fa-instagram me-1"></i><a href="⁠https://www.instagram.com/srwt.saa?igsh=aWl1dzVsaHpzN280" target="_blank">srwt.saa</a></p>
                             </div>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div class="d-flex justify-content-center align-items-center flex-column">
-                            <img class="d-block mx-auto w-25" src="assets/img/products/3.jpg">
+                            <img class="d-block mx-auto w-25" src="{{ asset('assets/img/developer/yoan.jpg') }}">
                             <div class="caption-text text-center mt-3 mb-2">
-                                <h5>Caption 4</h5>
-                                <p>Deskripsi caption 4.</p>
+                                <h4>Yohana Isabel Simanjuntak</h4>
+                                <p><i class="fa-brands fa-instagram me-1"></i><a
+                                        href="https://www.instagram.com/akuyohana_?igsh=Z2NjdGV3OWNvNnJj"
+                                        target="_blank">akuyohana_</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center align-items-center flex-column">
+                            <img class="d-block mx-auto w-25" src="{{ asset('assets/img/developer/dani.jpg') }}">
+                            <div class="caption-text text-center mt-3 mb-2">
+                                <h4>Dhani Davit</h4>
+                                <p><i class="fa-brands fa-instagram me-1"></i><a href="#">dhanidavit_</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center align-items-center flex-column">
+                            <img class="d-block mx-auto w-25" src="{{ asset('assets/img/developer/indah.jpg') }}">
+                            <div class="caption-text text-center mt-3 mb-2">
+                                <h4>Claudia Cristiani Inda Tokan</h4>
+                                <p><i class="fa-brands fa-instagram me-1"></i><a href="#">cldycrstni</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center align-items-center flex-column">
+                            <img class="d-block mx-auto w-25" src="{{ asset('assets/img/developer/gab.jpg') }}">
+                            <div class="caption-text text-center mt-3 mb-2">
+                                <h4>Gabriel Advent Batan</h4>
+                                <p><i class="fa-brands fa-instagram me-1"></i><a href="#">gab_adv</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center align-items-center flex-column">
+                            <img class="d-block mx-auto w-25" src="{{ asset('assets/img/developer/bram.jpg') }}">
+                            <div class="caption-text text-center mt-3 mb-2">
+                                <h4>Abram Arya Perdana</h4>
+                                <p><i class="fa-brands fa-instagram me-1"></i><a href="#">abram_arya</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center align-items-center flex-column">
+                            <img class="d-block mx-auto w-25" src="{{ asset('assets/img/developer/yanto.jpg') }}">
+                            <div class="caption-text text-center mt-3 mb-2">
+                                <h4>Yulius Susanto</h4>
+                                <p><i class="fa-brands fa-instagram me-1"></i><a href="#">_yantosusanto</a></p>
                             </div>
                         </div>
                     </div>
@@ -285,6 +292,7 @@
         </div>
     </section>
 
+    {{-- kontak developer --}}
     <section class="py-5">
         <div class="container">
             <div class="row mb-5">
@@ -296,9 +304,10 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-md-6 col-xl-4">
                     <div>
-                        <form class="p-3 p-xl-4" method="post">
+                        <form class="p-3 p-xl-4" action="{{ route('messege') }}" method="POST">
+                            @csrf
                             <div class="mb-3"><input class="form-control" type="text" id="name-1"
-                                    name="name" placeholder="Name"></div>
+                                    name="nama" placeholder="Name"></div>
                             <div class="mb-3"><input class="form-control" type="email" id="email-1"
                                     name="email" placeholder="Email"></div>
                             <div class="mb-3">
@@ -361,6 +370,7 @@
         </div>
     </section>
 
+    {{-- subscibe --}}
     <section class="py-5">
         <div class="container">
             <div

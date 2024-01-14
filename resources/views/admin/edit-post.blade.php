@@ -27,25 +27,25 @@
             </div>
             <div class="row mb-3">
                 <div class="col">
-                        <label for="kategori" class="form-label">Kategori</label>
-                        <select class="form-select bg-transparent" name="id_kategori">
-                            @foreach ($kategories as $item)
-                                <option value="{{ $item->id }}" @if ($post->id_kategori == $item->id) selected @endif>
-                                    {{ $item->kategori_name }}
-                                </option>
-                            @endforeach
-                        </select>
+                    <label for="kategori" class="form-label">Kategori</label>
+                    <select class="form-select bg-transparent" name="id_kategori">
+                        @foreach ($kategories as $item)
+                            <option value="{{ $item->id }}" @if ($post->id_kategori == $item->id) selected @endif>
+                                {{ $item->kategori_name }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="col">
-                        <label for="id_sub" class="form-label">Sub Kategori</label>
-                        <select class="form-select bg-transparent" name="id_sub">
-                            @foreach ($subs as $item)
-                                <option value="{{ $item->id }}" @if ($post->id_sub == $item->id) selected @endif>
-                                    {{ $item->sub_name }}
-                                </option>
-                            @endforeach
-                        </select>
+                    <label for="id_sub" class="form-label">Sub Kategori</label>
+                    <select class="form-select bg-transparent" name="id_sub">
+                        @foreach ($subs as $item)
+                            <option value="{{ $item->id }}" @if ($post->id_sub == $item->id) selected @endif>
+                                {{ $item->sub_name }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
 
@@ -123,7 +123,8 @@
                     </div>
 
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button class="btn btn-danger me-md-2" type="button"><i class="fa-solid fa-ban"></i>
+                        <button class="btn btn-danger me-md-2" type="button" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal"><i class="fa-solid fa-ban"></i>
                             Batal</button>
                         <button class="btn btn-success" type="submit"><i class="fa-solid fa-rotate"></i>
                             Update</button>
@@ -131,6 +132,26 @@
                 </div>
             </div>
         </form>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-4 fw-bold" id="exampleModalLabel">Konfirmasi</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="fs-5 text-danger">Apakah anda yakin membatalkan perubahan?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <a href="{{ route('daftar-post') }}" class="btn btn-danger">Batalkan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <script>

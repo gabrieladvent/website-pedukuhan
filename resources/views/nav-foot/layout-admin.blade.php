@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dashboard</title>
+    <title>Admin | {{ $title }}</title>
     <link href="{{ asset('assets/img/icon.png') }}" rel="icon">
 
     <link href="https://fonts.gstatic.com" rel="preconnect">

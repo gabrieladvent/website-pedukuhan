@@ -92,7 +92,7 @@
             </div>
         </div>
         <div class="mb-3">
-            <a href="#" class="btn btn-danger"><i class="fa-solid fa-hand-point-left me-2"></i>Kembali</a>
+            <a href="javascript:history.back()" class="btn btn-danger"><i class="fa-solid fa-hand-point-left me-2"></i>Kembali</a>
             <a href="{{ route('edit-post', ['slug' => $post->slug, 'kode_user' => $post->kode_user]) }}"
                 class="btn btn-info"><i class="fa-solid fa-pen-clip me-2"></i>Edit</a>
         </div>

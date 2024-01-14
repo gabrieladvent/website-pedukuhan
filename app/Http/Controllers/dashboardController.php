@@ -9,7 +9,8 @@ class dashboardController extends Controller
 {
     public function index()  {
         $user = Auth::user();
-        return view('admin.dashboard-admin', compact('user'));
+        $title = 'Dashboard';
+        return view('admin.dashboard-admin', compact('user', 'title'));
     }
 
     public function logout() {
