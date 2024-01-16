@@ -2,7 +2,7 @@
 @section('isi-content')
 
     {{-- Tampilan pertama --}}
-    {{-- <section>
+    <section>
         <div class="container py-5">
             <div class="row mb-5">
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
@@ -31,10 +31,10 @@
                 @endforeach
             </div>
         </div>
-    </section> --}}
+    </section>
 
     {{-- Tampilan kedua --}}
-    <section>
+    {{-- <section>
         <div class="container py-5">
             <div class="row mb-5">
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
@@ -71,5 +71,5 @@
                 </div>
             @endforeach
         </div>
-    </section>
+    </section> --}}
 @endsection

@@ -13,7 +13,8 @@ class kategoriModel extends Model
 
     protected $fillable = ['kategori_name', 'kode_user'];
 
-    public function postings() {
+    public function postings()
+    {
         return $this->hasMany(PostingModel::class, 'id_kategori');
     }
 

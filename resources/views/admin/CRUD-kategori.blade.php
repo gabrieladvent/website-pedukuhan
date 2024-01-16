@@ -128,7 +128,6 @@
                         <th class="text-center">No.</th>
                         <th class="text-center">Nama Kategori</th>
                         <th class="text-center">Nama Sub Kategori</th>
-                        <th class="text-center">Pembuat</th>
                         <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
@@ -141,23 +140,6 @@
                             <td>{{ $counter }}</td>
                             <td>{{ $index->kategori->kategori_name }}</td>
                             <td>{{ $index->sub_name }}</td>
-                            <td>
-                                @php
-                                    $found = false;
-                                @endphp
-                                @foreach ($users as $user)
-                                    @if ($index->kode_user == $user->id)
-                                        {{ $user->first_name . ' ' . $user->last_name }}
-                                        @php
-                                            $found = true;
-                                            break;
-                                        @endphp
-                                    @endif
-                                @endforeach
-                                @if (!$found)
-                                    Tidak Ada Penulis
-                                @endif
-                            </td>
                             <td>
                                 <button type="button" class="btn btn-info btn-edit-sub" data-bs-toggle="modal"
                                     data-bs-target="#editModalSub" data-bs-whatever="@mdo" data-id="{{ $index->id }}" data-sub-name="{{ $index->sub_name }}">

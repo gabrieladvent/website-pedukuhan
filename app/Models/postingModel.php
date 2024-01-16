@@ -26,8 +26,9 @@ class postingModel extends Model
         ];
     }
 
-    public function kategori() {
-        return $this->belongsTo(KategoriModel::class, 'id');
+    public function kategori()
+    {
+        return $this->belongsTo(kategoriModel::class, 'id_kategori');
     }
 
     public function subKategori()

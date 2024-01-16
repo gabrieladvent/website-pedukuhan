@@ -177,7 +177,7 @@
 
         kategoriSelect.addEventListener('change', function() {
             const selectedValue = parseInt(this.value);
-            if (selectedValue === 3) {
+            if (selectedValue === 2) {
                 subSelect.disabled = false;
             } else {
                 subSelect.disabled = true;

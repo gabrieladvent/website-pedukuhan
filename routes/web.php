@@ -25,9 +25,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [leadingController::class, 'index'])->name('home');
-Route::get('kegiatan-masyarakat', [leadingController::class, 'kegiatan_masyarakat'])->name('kegiatan'); 
-Route::get('rakyat', [leadingController::class, 'kearifan_lokal'])->name('kearifan');
-Route::get('kearifan-lokal', [leadingController::class, 'profile_weru'])->name('profile');
+Route::get('kegiatan-masyarakat/weru', [leadingController::class, 'kegiatan_masyarakat'])->name('kegiatan'); 
+Route::get('kearifan-lokal/weru', [leadingController::class, 'kearifan_lokal'])->name('kearifan');
+Route::get('profile/weru', [leadingController::class, 'profile_weru'])->name('profile');
 Route::post('send-message', [leadingController::class, 'send_messege'])->name('messege');
 
 Route::group([
@@ -64,6 +64,10 @@ Route::group([
         Route::post('admin/kategori/add/sub-kategori', [SubController::class, 'addSubKategori'])->name('add-sub');
         Route::post('admin/kategori/edit/sub-kategori/proses', [SubController::class, 'editSubKategori'])->name('edit-sub');
 
-    Route::get('logout', [dashboardController::class, 'logout'])->name('logout');
+        Route::get('admin/user/daftar', [UserController::class, 'index'])->name('daftar-user');
+        Route::get('admin/user/hapus/{id}', [UserController::class, 'delete_user'])->name('delete-user');
+        Route::get('admin/user/aktivasi/{id}', [UserController::class, 'aktivasi_akun'])->name('aktivasi-user');
+
     });
+    Route::get('logout', [dashboardController::class, 'logout'])->name('logout');
 });

@@ -39,18 +39,13 @@
                                     File tidak ditemukan.
                                 @endif
                             </p>
-                            <a href="" class="link_404">Go to Home</a>
+                            <a href="{{ route('logout') }}" class="link_404">Logout</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
 </body>
 
 </html>

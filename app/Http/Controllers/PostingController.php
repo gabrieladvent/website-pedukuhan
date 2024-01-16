@@ -39,6 +39,7 @@ class PostingController extends Controller
             $validateData = $request->validate([
                 'title' => 'required|max:255',
                 'id_kategori' => 'required',
+                'id_sub' => 'nullable',
                 'body' => 'required',
                 'foto_satu' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
                 'foto_dua' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
@@ -184,7 +185,6 @@ class PostingController extends Controller
 
     public function deletepost($slug, $kode_user)
     {
-        dd($slug, $kode_user);
         try {
             $post = PostingModel::where('slug', $slug)
                 ->where('kode_user', $kode_user)
