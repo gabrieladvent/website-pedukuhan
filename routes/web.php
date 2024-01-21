@@ -28,6 +28,7 @@ Route::get('/', [leadingController::class, 'index'])->name('home');
 Route::get('kegiatan-masyarakat/weru', [leadingController::class, 'kegiatan_masyarakat'])->name('kegiatan'); 
 Route::get('kearifan-lokal/weru', [leadingController::class, 'kearifan_lokal'])->name('kearifan');
 Route::get('profile/weru', [leadingController::class, 'profile_weru'])->name('profile');
+Route::get('reading/posting/{slug}/{kode_user}', [leadingController::class, 'read_post'])->name('read');
 Route::post('send-message', [leadingController::class, 'send_messege'])->name('messege');
 
 Route::group([
@@ -67,6 +68,9 @@ Route::group([
         Route::get('admin/user/daftar', [UserController::class, 'index'])->name('daftar-user');
         Route::get('admin/user/hapus/{id}', [UserController::class, 'delete_user'])->name('delete-user');
         Route::get('admin/user/aktivasi/{id}', [UserController::class, 'aktivasi_akun'])->name('aktivasi-user');
+
+        Route::get('admin/registrasi/user', [UserController::class, 'regis_view'])->name('regis-view');
+        Route::post('admin/registrasi/user/proses', [UserController::class, 'regis_proses'])->name('user-new');
 
     });
     Route::get('logout', [dashboardController::class, 'logout'])->name('logout');

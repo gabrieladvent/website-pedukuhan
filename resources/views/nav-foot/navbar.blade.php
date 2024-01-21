@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md sticky-top py-3 navbar-dark" id="mainNav">
     <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><span
                 class="bs-icon-sm d-flex justify-content-center align-items-center me-2 bs-icon">
-                <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" width="90px" class="me-4">
+                <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" width="300%" class="me-4">
             </span>
                 <span>WERU</span></a><button data-bs-toggle="collapse" class="navbar-toggler"
             data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span

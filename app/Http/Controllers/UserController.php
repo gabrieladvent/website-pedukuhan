@@ -37,7 +37,7 @@ class UserController extends Controller
             $user->password = bcrypt($request->input('password'));
             $user->slug = $slug;
             $user->save();
-
+            
             return redirect()->route('login')->with('success', 'Akun Berhasil Terdaftar');
         } catch (Exception $e) {
             return redirect()->route('login')->with('error', 'Registrasi Gagal');
@@ -54,7 +54,7 @@ class UserController extends Controller
 
     public function delete_user($id)
     {
-        if(Auth::user()->id == $id){
+        if (Auth::user()->id == $id) {
 
             return redirect()->back()->with('error', 'Perubahan Gagal!');
         }
@@ -74,9 +74,8 @@ class UserController extends Controller
 
     public function aktivasi_akun($id)
     {
-        if(Auth::user()->id == $id){
+        if (Auth::user()->id == $id) {
             return redirect()->back()->with('error', 'Perubahan Gagal!');
-
         }
         try {
             $user = User::findOrFail($id);
@@ -87,18 +86,59 @@ class UserController extends Controller
                     'activate' => '5',
                 ]);
                 return redirect()->back()->with('success', 'Akun berhasil diaktifkan!');
-
             } elseif ($user->admin == 4 && $user->activate == 5) {
                 $user->update([
                     'admin' => '2',
                     'activate' => '3',
                 ]);
                 return redirect()->back()->with('success', 'Akun berhasil non-aktifkan!');
-            } else{
+            } else {
                 return redirect()->back()->with('error', 'Super Admin tidak dapat diubah');
             }
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Gagal mengaktifkan akun. Pesan error: ' . $e->getMessage());
+        }
+    }
+
+    public function regis_view()
+    {
+        $user = Auth::user();
+        $title = 'Registrasi User';
+        return view('admin.regist-admin', compact('user', 'title'));
+    }
+
+    public function regis_proses(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'username' => 'required',
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->with('error', $validator->errors());
+        }
+
+        $first_name = $request->input('first_name');
+        $last_name = $request->input('last_name');
+        $slug = Str::slug($first_name . '-' . $last_name);
+
+        try {
+            $user = new User();
+            $user->id = Uuid::uuid4()->getHex();
+            $user->first_name = $first_name;
+            $user->last_name = $last_name;
+            $user->email = $request->input('username');
+            $user->admin = '4';
+            $user->activate = '5';
+            $user->password = bcrypt($request->input('password'));
+            $user->slug = $slug;
+            $user->save();
+
+            return redirect('/success-page')->with('success', 'Akun Berhasil Terdaftar');
+        } catch (Exception $e) {
+            return redirect('/error-page')->with('error', $e->getMessage());
         }
     }
 }

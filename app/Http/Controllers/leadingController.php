@@ -51,23 +51,27 @@ class leadingController extends Controller
         return view('profile-weru', compact('title'));
     }
 
-    // public function send_messege(Request $request){
-    //     $validatedData = $request->validate([
-    //         'nama' => 'required',
-    //         'email' => 'required|email',
-    //         'message' => 'required',
-    //     ]);
+    public function read_post($slug, $kode_user)
+    {
+        $post = PostingModel::where('slug', $slug)
+            ->where('kode_user', $kode_user)
+            ->first();
+        $user = User::all();
+        $title = 'Reading';
 
-    //     try {
-    //         // Simpan pesan ke dalam database
-    //         Message::create($validatedData);
+        $fotoNames = ['foto_satu', 'foto_dua', 'foto_tiga', 'foto_empat', 'foto_lima'];
+        $foto = [];
 
-    //         // Redirect kembali ke halaman formulir dengan pesan sukses
-    //         return redirect()->route('your.form')->with('success', 'Pesan berhasil dikirim!');
-    //     } catch (\Exception $e) {
-    //         // Redirect kembali ke halaman formulir dengan pesan error jika terjadi kesalahan
-    //         return redirect()->route('your.form')->with('error', 'Gagal mengirim pesan. Error: ' . $e->getMessage());
-    //     }
-    //     return 'masuk';
-    // }
+        foreach ($fotoNames as $fotoName) {
+            if (!empty($post->$fotoName)) {
+                $foto[] = [
+                    'path' => $post->$fotoName,
+                    'name' => $fotoName,
+                    'instagram' => 'https://www.instagram.com/',  
+                ];
+            }
+        }
+        // dd($foto);
+        return view('read-view', compact('title', 'post', 'user', 'foto'));
+    }
 }

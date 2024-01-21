@@ -85,7 +85,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="forms-layouts.html">
+                    <a href="#">
                         <i class="bi bi-circle"></i><span>Aktivasi User</span>
                     </a>
                 </li>
@@ -102,7 +102,7 @@
 
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="pages-register.html">
+            <a class="nav-link collapsed" href="{{ route('regis-view') }}">
                 <i class="bi bi-card-list"></i>
                 <span>Register</span>
             </a>

@@ -35,6 +35,7 @@ class PostingController extends Controller
 
     public function addPost(Request $request)
     {
+        
         try {
             $validateData = $request->validate([
                 'title' => 'required|max:255',
@@ -47,6 +48,8 @@ class PostingController extends Controller
                 'foto_empat' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
                 'foto_lima' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             ]);
+
+            // dd($validateData['body']);
 
             $validateData['kode_user'] = Auth::user()->id;
             $validateData['headline'] = Str::limit(strip_tags($request->body), 100, '...');

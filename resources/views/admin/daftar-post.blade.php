@@ -12,6 +12,9 @@
             </div>
         @endif
         <p class="mb-3 fs-3 fw-bold text-dark"><i class="fa-solid fa-book"></i></i> Daftar Postingan</p>
+        <div class="add mb-3">
+            <a href="{{ route('post-view') }}" class="btn btn-info"><i class="fa-solid fa-plus me-2"></i>Tambah</a>
+        </div>
         <div class="table">
             <table id="example" class="display" style="width:100%">
                 <thead>
