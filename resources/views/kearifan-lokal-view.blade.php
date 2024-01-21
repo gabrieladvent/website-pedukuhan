@@ -24,7 +24,7 @@
                                 <span class="badge bg-primary mb-2">{{ optional($cerita->subKategori)->sub_name }}</span>
                                 <h4 class="fw-bold">{{ $cerita->title }}</h4>
                                 <p class="text-muted">{{ $cerita->headline }}</p>
-                                <a href="#" class="btn btn-primary shadow mb-2">See More</a>
+                                <a href="{{ route('read', ['slug' => $cerita->slug, 'kode_user' => $cerita->kode_user]) }}" class="btn btn-primary shadow">Lanjut Baca</a>
                             </div>
                         </div>
                     </div>

@@ -129,7 +129,7 @@
                                     <p class="text-muted card-text mb-4">
                                         {{ $item->headline }}
                                     </p>
-                                    <a href="#" class="btn btn-primary shadow">Lanjut Baca</a>
+                                    <a href="{{ route('read', ['slug' => $item->slug, 'kode_user' => $item->kode_user]) }}" class="btn btn-primary shadow">Lanjut Baca</a>
                                 </div>
                             </div>
                         </div>

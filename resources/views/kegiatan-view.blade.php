@@ -24,7 +24,7 @@
                             <p>Penulis: {{ $user->first_name . ' ' . $user->last_name }}</p>
                             <p class="text-muted mb-4">{{ $item->headline }}</p>   
                             @endif
-                            <button class="btn btn-primary shadow" type="button">Learn more</button>
+                            <a href="{{ route('read', ['slug' => $item->slug, 'kode_user' => $item->kode_user]) }}" class="btn btn-primary shadow">Lanjut Baca</a>
                         </div>
                     </div>
                     @if ($key % 2 != 0)
