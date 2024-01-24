@@ -18,7 +18,6 @@ class IsAdmin
     public function handle(Request $request, Closure $next)
     {
         $user = Auth::user();
-        // dd($user, 'isAdmin', Auth::check());
 
         $allowedAdminValues = ['4', '6'];
         $allowedActivateValues = ['5', '7'];

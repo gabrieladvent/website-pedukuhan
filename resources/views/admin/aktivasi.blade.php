@@ -11,7 +11,7 @@
                 {{ session('success') }}
             </div>
         @endif
-        <p class="mb-3 fs-3 fw-bold text-dark"><i class="fa-solid fa-users"></i> Daftar User</p>
+        <p class="mb-3 fs-3 fw-bold text-dark"><i class="fa-solid fa-users"></i> Daftar Aktivasi Akun</p>
         <div class="table">
             <table id="example" class="display" style="width:100%">
                 <thead>
@@ -19,13 +19,12 @@
                         <th class="text-center">Kode User</th>
                         <th class="text-center">Username</th>
                         <th class="text-center">Nama User</th>
-                        <th class="text-center">Aktivasi</th>
                         <th class="text-center">Status</th>
                         <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($userAll as $item)
+                    @foreach ($aktivasi as $item)
                         <tr>
                             <td class="text-center">{{ $item->id }}</td>
                             <td class="text-center">{{ $item->email }}</td>
@@ -34,14 +33,6 @@
                                 <td class="text-center">Akun Belum Aktif</td>
                             @else
                                 <td class="text-center">Akun Aktif</td>
-                            @endif
-
-                            @if ($item->admin == 4)
-                                <td class="text-center">Admin</td>
-                            @elseif($item->admin == 6)
-                                <td class="text-center">Super Admin</td>
-                            @else
-                            <td class="text-center"><i>Harap akun diaktivasi terlebih dahulu</i></td>
                             @endif
 
                             <td class="text-center">
@@ -69,7 +60,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                        @if (count($userAll) >= 1)
+                        @if (count($aktivasi) >= 1)
                             <a href="{{ route('delete-user', ['id' => $item->id]) }}" class="btn btn-danger">Hapus</a>
                         @endif
                     </div>

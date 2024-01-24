@@ -1,6 +1,5 @@
 @extends('nav-foot.layout')
 @section('isi-content')
-
     {{-- Tampilan pertama --}}
     <section>
         <div class="container py-5">
@@ -13,23 +12,29 @@
                 </div>
             </div>
 
-            <div class="row row-cols-1 row-cols-md-2 mx-auto" style="max-width: 900px;">
-                @foreach ($kearifan as $cerita)
-                    <div class="col mb-4">
-                        <div>
-                            <a href="#">
-                                <img class="rounded img-fluid shadow w-100 fit-cover" src="{{ asset('storage/' . $cerita->foto_satu) }}" style="height: 250px;">
-                            </a>
-                            <div class="py-4">
-                                <span class="badge bg-primary mb-2">{{ optional($cerita->subKategori)->sub_name }}</span>
-                                <h4 class="fw-bold">{{ $cerita->title }}</h4>
-                                <p class="text-muted">{{ $cerita->headline }}</p>
-                                <a href="{{ route('read', ['slug' => $cerita->slug, 'kode_user' => $cerita->kode_user]) }}" class="btn btn-primary shadow">Lanjut Baca</a>
-                            </div>
+            @if ($user == 'nothing')
+                <p class="text-center fs-2 fw-bold">BELUM ADA CERITA KEGIATAN</p>
+            @else
+                <div class="row row-cols-1 row-cols-md-2 mx-auto" style="max-width: 900px;">
+            @endif
+            @foreach ($kearifan as $cerita)
+                <div class="col mb-4">
+                    <div>
+                        <a href="#">
+                            <img class="rounded img-fluid shadow w-100 fit-cover"
+                                src="{{ asset('storage/' . $cerita->foto_satu) }}" style="height: 250px;">
+                        </a>
+                        <div class="py-4">
+                            <span class="badge bg-primary mb-2">{{ optional($cerita->subKategori)->sub_name }}</span>
+                            <h4 class="fw-bold">{{ $cerita->title }}</h4>
+                            <p class="text-muted">{{ $cerita->headline }}</p>
+                            <a href="{{ route('read', ['slug' => $cerita->slug, 'kode_user' => $cerita->kode_user]) }}"
+                                class="btn btn-primary shadow">Lanjut Baca</a>
                         </div>
                     </div>
-                @endforeach
-            </div>
+                </div>
+            @endforeach
+        </div>
         </div>
     </section>
 

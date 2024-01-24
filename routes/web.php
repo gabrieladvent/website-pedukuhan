@@ -69,6 +69,8 @@ Route::group([
         Route::get('admin/user/hapus/{id}', [UserController::class, 'delete_user'])->name('delete-user');
         Route::get('admin/user/aktivasi/{id}', [UserController::class, 'aktivasi_akun'])->name('aktivasi-user');
 
+        Route::get('admin/aktivasi/list', [UserController::class, 'aktivasi_video'])->name('aktivasi-view');
+
         Route::get('admin/registrasi/user', [UserController::class, 'regis_view'])->name('regis-view');
         Route::post('admin/registrasi/user/proses', [UserController::class, 'regis_proses'])->name('user-new');
 

@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('slug')->nullable();
-            $table->enum('admin', ['2', '4', '6'])->default('2'); //2 untuk bukan admin || 6 untuk super admin
-            $table->enum('activate', ['3', '5', '7'])->default('3'); //3 belum aktif || 7 untuk super admin
+            $table->enum('admin', ['2', '4', '6'])->nullable(); //2 untuk bukan admin || 6 untuk super admin
+            $table->enum('activate', ['3', '5', '7'])->nullable(); //3 belum aktif || 7 untuk super admin
             $table->rememberToken();
             $table->timestamps();
         });

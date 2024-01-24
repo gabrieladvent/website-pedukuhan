@@ -72,7 +72,8 @@
             <div class="row">
                 <div class="col-md-10 col-lg-8 mx-auto">
                     <p class="text-muted copyright">Copyright&nbsp;©&nbsp;34 WERU 2024</p>
-                    <a href="{{ route('home') }}" id=""><i class="fa-regular fa-hand-point-left"></i> Kembali</a>
+                    <a href="{{ route('home') }}" id=""><i class="fa-regular fa-hand-point-left"></i>
+                        Kembali</a>
                 </div>
             </div>
         </div>

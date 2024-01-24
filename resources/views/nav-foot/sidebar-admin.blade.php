@@ -4,7 +4,6 @@
             <img src="{{ asset('assets/img/logo.png') }}" alt="Logo">
             <span class="d-none d-lg-block">WERU</span>
         </a>
-        <i class="bi bi-list toggle-sidebar-btn"></i>
     </div>
 
     <nav class="header-nav ms-auto">
@@ -20,12 +19,6 @@
                     </li>
                     <li>
                         <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <i class="bi bi-person"></i>
-                            <span>My Profile</span>
-                        </a>
                     </li>
                     <li>
                         <hr class="dropdown-divider">
@@ -85,7 +78,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ route('aktivasi-view') }}">
                         <i class="bi bi-circle"></i><span>Aktivasi User</span>
                     </a>
                 </li>
@@ -93,14 +86,7 @@
         </li><!-- End Forms Nav -->
        
         <li class="nav-heading">Other</li>
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
-                <span>F.A.Q</span>
-            </a>
-        </li><!-- End F.A.Q Page Nav -->
-
-
+        
         <li class="nav-item">
             <a class="nav-link collapsed" href="{{ route('regis-view') }}">
                 <i class="bi bi-card-list"></i>

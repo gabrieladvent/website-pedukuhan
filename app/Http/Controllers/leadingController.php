@@ -18,8 +18,17 @@ class leadingController extends Controller
         $latitude = 110.7109651;
 
         $post = postingModel::all();
-        $kegiatan = postingModel::where('id_kategori', 1)->get();
-        $kearifan = postingModel::where('id_kategori', 2)->get();
+        // $kegiatan = postingModel::where('id_kategori', 1)->get();
+        // $kearifan = postingModel::where('id_kategori', 2)->get();
+
+        $kegiatan = PostingModel::join('kategori', 'posting.id_kategori', '=', 'kategori.id')
+            ->where('kategori.kategori_name', '=', 'Kegiatan')
+            ->get();
+
+        $kearifan = PostingModel::join('kategori', 'posting.id_kategori', '=', 'kategori.id')
+            ->where('kategori.kategori_name', '=', 'Kearifan Lokal')
+            ->get();
+        // dd($kearifan);
 
         return view('leading', compact('longitude', 'latitude', 'title', 'post', 'kegiatan', 'kearifan'));
     }
@@ -28,8 +37,16 @@ class leadingController extends Controller
     public function kegiatan_masyarakat()
     {
         $title = 'Kegiatan Masyarakat';
-        $kegiatan = postingModel::where('id_kategori', 1)->get();
-        $user = User::find($kegiatan->first()->kode_user);
+        // $kegiatan = postingModel::where('id_kategori', 1)->get();
+        $kegiatan = PostingModel::join('kategori', 'posting.id_kategori', '=', 'kategori.id')
+            ->where('kategori.kategori_name', '=', 'Kegiatan')
+            ->get();
+
+        if (count($kegiatan) > 0) {
+            $user = User::find($kegiatan->first()->kode_user);
+        } else {
+            $user = "nothing";
+        }
 
         return view('kegiatan-view', compact('title', 'kegiatan', 'user'));
     }
@@ -37,12 +54,20 @@ class leadingController extends Controller
     public function kearifan_lokal()
     {
         $title = 'Kearifan Lokal';
-        $kearifan = postingModel::where('id_kategori', 2)->get();
-        $user = User::find($kearifan->first()->kode_user);
-        $kategori = kategoriModel::find($kearifan->first()->id_kategori);
-        $subKategori = SubKategoriModel::find($kearifan->first()->id_sub);
+        // $kearifan = postingModel::where('id_kategori', 2)->get();
+        $kearifan = PostingModel::join('kategori', 'posting.id_kategori', '=', 'kategori.id')
+            ->where('kategori.kategori_name', '=', 'Kearifan Lokal')
+            ->get();
 
-        return view('kearifan-lokal-view', compact('title', 'kearifan', 'kategori', 'subKategori'));
+        if (count($kearifan) <= 0) {
+            $user = 'nothing';
+            return view('kearifan-lokal-view', compact('title', 'kearifan', 'user'));
+        } else {
+            $user = User::find($kearifan->first()->kode_user);
+            $kategori = kategoriModel::find($kearifan->first()->id_kategori);
+            $subKategori = SubKategoriModel::find($kearifan->first()->id_sub);
+            return view('kearifan-lokal-view', compact('title', 'kearifan', 'kategori', 'subKategori', 'user'));
+        }
     }
 
     public function profile_weru()
@@ -67,11 +92,14 @@ class leadingController extends Controller
                 $foto[] = [
                     'path' => $post->$fotoName,
                     'name' => $fotoName,
-                    'instagram' => 'https://www.instagram.com/',  
+                    'instagram' => 'https://www.instagram.com/',
                 ];
             }
         }
-        // dd($foto);
         return view('read-view', compact('title', 'post', 'user', 'foto'));
+    }
+
+    public function send_messege(Request $request) {
+        dd($request->all());
     }
 }

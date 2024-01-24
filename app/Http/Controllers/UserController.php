@@ -7,6 +7,7 @@ use App\Models\User;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -37,7 +38,7 @@ class UserController extends Controller
             $user->password = bcrypt($request->input('password'));
             $user->slug = $slug;
             $user->save();
-            
+
             return redirect()->route('login')->with('success', 'Akun Berhasil Terdaftar');
         } catch (Exception $e) {
             return redirect()->route('login')->with('error', 'Registrasi Gagal');
@@ -46,10 +47,14 @@ class UserController extends Controller
 
     public function index()
     {
-        $title = 'Daftar User';
         $user = Auth::user();
-        $userAll = User::all();
-        return view('admin.daftar-user', compact('title', 'user', 'userAll'));
+        if ($user->activate != 7 && $user->admin != 6) {
+            return redirect()->back()->with('error', 'Anda Tidak Mempunyai Hak Akses');
+        } else {
+            $title = 'Daftar User';
+            $userAll = User::all();
+            return view('admin.daftar-user', compact('title', 'user', 'userAll'));
+        }
     }
 
     public function delete_user($id)
@@ -79,8 +84,7 @@ class UserController extends Controller
         }
         try {
             $user = User::findOrFail($id);
-            if ($user->admin == 2 && $user->activate == 3) {
-                // dd($user);
+            if (($user->admin == 2 || $user->admin == null) && ($user->activate == 3 || $user->activate == null)) {
                 $user->update([
                     'admin' => '4',
                     'activate' => '5',
@@ -113,7 +117,7 @@ class UserController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'username' => 'required',
-            'password' => 'required|min:8|confirmed',
+            'password' => 'required|min:8',
         ]);
 
         if ($validator->fails()) {
@@ -136,9 +140,21 @@ class UserController extends Controller
             $user->slug = $slug;
             $user->save();
 
-            return redirect('/success-page')->with('success', 'Akun Berhasil Terdaftar');
+            return redirect()->route('daftar-user')->with('success', 'Akun Berhasil Terdaftar');
         } catch (Exception $e) {
-            return redirect('/error-page')->with('error', $e->getMessage());
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function aktivasi_video()
+    {
+        $user = Auth::user();
+        if ($user->activate != 7 && $user->admin != 6) {
+            return redirect()->back()->with('error', 'Anda Tidak Mempunyai Hak Akses');
+        } else {
+            $title = 'Aktivasi Akun';
+            $aktivasi = DB::table('users')->where('activate',  null)->get();
+            return view('admin.aktivasi', compact('user', 'aktivasi', 'title'));
         }
     }
 }
