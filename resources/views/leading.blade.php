@@ -6,7 +6,7 @@
                 <div class="col-md-8 col-xl-6 text-center text-md-start mx-auto">
                     <div class="text-center">
                         <p class="fw-bold text-success mb-2">WERU | PETIR | RONGKOP | GUNUNG KIDUL | YOGYAKARTA</p>
-                        <h1 class="fw-bold">Selamat Datang dan <em>Enjoy</em>!</h1>
+                        <h1 class="fw-bold mt-5" style="">Selamat Datang di Weru</h1>
                     </div>
                 </div>
                 <div class="col-12 col-lg-10 mx-auto">
@@ -33,17 +33,17 @@
     <section class="py-5">
         <div class="container text-center py-5">
             <p class="mb-4" style="font-size: 1.6rem;">
-                Ini adalah website profile
+                Ini adalah website profil
                 <span class="text-success">
                     <strong>Padukuhan Weru.</strong>
                 </span>
                 &nbsp;Persembahan dari mahasiswa KKN
             </p>
             <p class="fw-bold text-success mb-2">Didukung Oleh:</p>
-            <a href="#"> <img class="m-3" style="width: 10%;" src="{{ asset('assets/img/sadhar.png') }}"></a>
-            <a href="#"> <img class="m-3" style="width: 15%;" src="{{ asset('assets/img/logo.png') }}"></a>
-            <a href="#"> <img class="m-3" style="width: 10%;" src="{{ asset('assets/img/petir.png') }}"></a>
-            <a href="#"> <img class="m-3" style="width: 10%;" src="{{ asset('assets/img/laravel.png') }}"></a>
+            <a href="https://www.usd.ac.id" target="_blank"> <img class="m-3" style="width: 10%;" src="{{ asset('assets/img/sadhar.png') }}"></a>
+            <a href="https://www.instagram.com/67weru?igsh=czRoYTlqZWVoa3dl" target="_blank"> <img class="m-3" style="width: 15%;" src="{{ asset('assets/img/logo.png') }}"></a>
+            <a href="https://desapetir.gunungkidulkab.go.id/first" target="_blank"> <img class="m-3" style="width: 11%;" src="{{ asset('assets/img/petir.png') }}"></a>
+            <a href="https://laravel.com" target="_blank"> <img class="m-3 ms-5" style="width: 10%;" src="{{ asset('assets/img/laravel.png') }}"></a>
         </div>
     </section>
 
@@ -53,7 +53,7 @@
             <div class="row">
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
                     <p class="fw-bold text-success mb-2">Cerita Kita</p>
-                    <h3 class="fw-bold">Kegiatan Masyarakat Weru x KKN 34</h3>
+                    <h3 class="fw-bold">Kegiatan Masyarakat Weru x Kelompok 34 KKN 	LXVII</h3>
                 </div>
             </div>
             <div class="py-5 p-lg-5">
@@ -98,7 +98,7 @@
         <div class="container py-5">
             <div class="row">
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
-                    <p class="fw-bold text-success mb-2">Video Profile Pedukuhan</p>
+                    <p class="fw-bold text-success mb-2">Video Profil Pedukuhan</p>
                 </div>
             </div>
             <div class="py-5 p-lg-5">
@@ -205,7 +205,7 @@
                     <div class="d-flex justify-content-center align-items-center flex-column">
                         <img class="d-block mx-auto w-25" src="{{ asset('assets/img/developer/caesil.jpg') }}">
                         <div class="caption-text text-center mt-3 mb-2">
-                            <h4>Caesilia Apri Purwanti</h4>
+                            <h4>Caesilia Apri P</h4>
                             <p><i class="fa-brands fa-instagram me-1"></i><a
                                     href="https://www.instagram.com/caesiliaapr_?igsh=ZXdieGpjNnI1d2dw"
                                     target="_blank">caesilliaapr_</a></p>
@@ -216,7 +216,7 @@
                     <div class="d-flex justify-content-center align-items-center flex-column">
                         <img class="d-block mx-auto w-25" src="{{ asset('assets/img/developer/nadila.jpg') }}">
                         <div class="caption-text text-center mt-3 mb-2">
-                            <h4>Nadilla Diva Maharani</h4>
+                            <h4>Nadilla Diva M</h4>
                             <p><i class="fa-brands fa-instagram me-1"></i><a
                                     href="https://www.instagram.com/nadilladivaa?igsh=bTZ6M2M0OWV2dDNi&utm_source=qr"
                                     target="_blank">nadilladivaa</a></p>
@@ -238,7 +238,7 @@
                     <div class="d-flex justify-content-center align-items-center flex-column">
                         <img class="d-block mx-auto w-25" src="{{ asset('assets/img/developer/yoan.jpg') }}">
                         <div class="caption-text text-center mt-3 mb-2">
-                            <h4>Yohana Isabel Simanjuntak</h4>
+                            <h4>Yohana Isabel S</h4>
                             <p><i class="fa-brands fa-instagram me-1"></i><a
                                     href="https://www.instagram.com/akuyohana_?igsh=Z2NjdGV3OWNvNnJj"
                                     target="_blank">akuyohana_</a></p>
@@ -258,7 +258,7 @@
                     <div class="d-flex justify-content-center align-items-center flex-column">
                         <img class="d-block mx-auto w-25" src="{{ asset('assets/img/developer/indah.jpg') }}">
                         <div class="caption-text text-center mt-3 mb-2">
-                            <h4>Claudia Cristiani Inda Tokan</h4>
+                            <h4>Claudia Inda Tokan</h4>
                             <p><i class="fa-brands fa-instagram me-1"></i><a href="#">cldycrstni</a></p>
                         </div>
                     </div>
@@ -276,7 +276,7 @@
                     <div class="d-flex justify-content-center align-items-center flex-column">
                         <img class="d-block mx-auto w-25" src="{{ asset('assets/img/developer/bram.jpg') }}">
                         <div class="caption-text text-center mt-3 mb-2">
-                            <h4>Abram Arya Perdana</h4>
+                            <h4>Abram Arya</h4>
                             <p><i class="fa-brands fa-instagram me-1"></i><a href="#">abram_arya</a></p>
                         </div>
                     </div>
@@ -303,7 +303,7 @@
     </section>
 
 {{-- kontak developer --}}
-    <section class="py-5">
+    {{-- <section class="py-5">
     <div class="container">
         <div class="row mb-5">
             <div class="col-md-8 col-xl-6 text-center mx-auto">
@@ -363,5 +363,5 @@
             </div>
         </div>
     </div>
-    </section>
+    </section> --}}
 @endsection

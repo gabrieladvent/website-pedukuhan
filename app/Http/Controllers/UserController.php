@@ -60,7 +60,6 @@ class UserController extends Controller
     public function delete_user($id)
     {
         if (Auth::user()->id == $id) {
-
             return redirect()->back()->with('error', 'Perubahan Gagal!');
         }
         try {
@@ -140,7 +139,7 @@ class UserController extends Controller
             $user->slug = $slug;
             $user->save();
 
-            return redirect()->route('daftar-user')->with('success', 'Akun Berhasil Terdaftar');
+            return redirect()->back()->with('success', 'Akun Berhasil Terdaftar');
         } catch (Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }

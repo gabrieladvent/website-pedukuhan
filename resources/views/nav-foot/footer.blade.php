@@ -6,8 +6,8 @@
                     <div class="col-lg-8">
                         <p>
                             Website ini masih jauh dari kesempurnaan, tetapi inilah hasil karya kami untuk Weru.
-                            Harapannya website ini dapat digunakan dengan sebaik-baiknya, untuk mencari informasi
-                            dan referensi bagi masyarakat luas. Terima kasih dan selamat menikmati.
+                            Harapannya, website ini dapat digunakan dengan sebaik-baiknya untuk mencari informasi
+                            dan referensi bagi masyarakat luas. Terima kasih dan selamat menikmati!
                         </p>
                     </div>
                 </div>

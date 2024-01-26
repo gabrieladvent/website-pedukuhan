@@ -20,7 +20,7 @@ img.imgthumb {
     position: fixed;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0);
+    background: rgb(0, 0, 0) !important;
     z-index: 9999;
     transition: .8s;
     text-align: center;
@@ -107,6 +107,6 @@ img.imgthumb {
 }
 
 h2,h1, .subheading{
-    color: rgb(255, 255, 255);
-    text-shadow: 4px 4px #000000;
+    color: rgb(0, 0, 0) !important;
+    text-shadow: 4px 4px #ffffff !important;
 }

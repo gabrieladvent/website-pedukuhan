@@ -38,12 +38,14 @@ class leadingController extends Controller
     {
         $title = 'Kegiatan Masyarakat';
         // $kegiatan = postingModel::where('id_kategori', 1)->get();
-        $kegiatan = PostingModel::join('kategori', 'posting.id_kategori', '=', 'kategori.id')
-            ->where('kategori.kategori_name', '=', 'Kegiatan')
-            ->get();
 
+        $kegiatan = PostingModel::join('kategori', 'posting.id_kategori', '=', 'kategori.id')
+            ->join('users', 'posting.kode_user', '=', 'users.id') // Join dengan tabel users
+            ->where('kategori.kategori_name', '=', 'Kegiatan')
+            ->select('posting.*', 'users.first_name', 'users.last_name') // Pilih kolom yang diperlukan
+            ->get();
         if (count($kegiatan) > 0) {
-            $user = User::find($kegiatan->first()->kode_user);
+            $user = User::all();
         } else {
             $user = "nothing";
         }
@@ -96,10 +98,12 @@ class leadingController extends Controller
                 ];
             }
         }
+        // dd($foto);
         return view('read-view', compact('title', 'post', 'user', 'foto'));
     }
 
-    public function send_messege(Request $request) {
+    public function send_messege(Request $request)
+    {
         dd($request->all());
     }
 }

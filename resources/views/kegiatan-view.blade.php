@@ -23,10 +23,10 @@
                         <div class="col d-md-flex align-items-md-end align-items-lg-center mb-5">
                             <div>
                                 <h3 class="fw-bold">{{ $item->title }}</h3>
-                                @if ($item->kode_user == $user->id)
-                                    <p>Penulis: {{ $user->first_name . ' ' . $user->last_name }}</p>
-                                    <p class="text-muted mb-4">{{ $item->headline }}</p>
-                                @endif
+
+                                <p>Penulis: {{ $item->first_name . ' ' . $item->last_name }}</p>
+                                <p class="text-muted mb-4">{{ $item->headline }}</p>
+
                                 <a href="{{ route('read', ['slug' => $item->slug, 'kode_user' => $item->kode_user]) }}"
                                     class="btn btn-primary shadow">Lanjut Baca</a>
                             </div>
