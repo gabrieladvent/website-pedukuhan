@@ -13,15 +13,15 @@
                     <div class="position-relative" style="display: flex;flex-wrap: wrap;justify-content: flex-end;">
                         <div style="position: relative;flex: 0 0 45%;transform: translate3d(-15%, 35%, 0);">
                             <img class="img-fluid" data-bss-parallax="" data-bss-parallax-speed="0.8"
-                                src="assets/img/products/3.jpg">
+                                src="{{ asset('assets/img/f5.jpg') }}">
                         </div>
                         <div style="position: relative;flex: 0 0 45%;transform: translate3d(-5%, 20%, 0);">
                             <img class="img-fluid" data-bss-parallax="" data-bss-parallax-speed="0.4"
-                                src="assets/img/products/2.jpg">
+                                src="{{ asset('assets/img/f4.jpg') }}">
                         </div>
                         <div style="position: relative;flex: 0 0 60%;transform: translate3d(0, 0%, 0);">
                             <img class="img-fluid" data-bss-parallax="" data-bss-parallax-speed="0.25"
-                                src="assets/img/products/1.jpg">
+                                src="{{ asset('assets/img/f2.jpg') }}">
                         </div>
                     </div>
                 </div>
@@ -102,11 +102,12 @@
                 </div>
             </div>
             <div class="py-5 p-lg-5">
-                <div class="embed-responsive embed-responsive-16by9">
+                {{-- <div class="embed-responsive embed-responsive-16by9">
                     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/23PkijCRZ9E?rel=0&autoplay=1"
                         allowfullscreen>
                     </iframe>
-                </div>
+                </div> --}}
+                <h1><center>Dalam Proses</center></h1>
             </div>
         </div>
     </section>

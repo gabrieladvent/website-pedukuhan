@@ -26,9 +26,9 @@
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="/">
                 <span>WERU</span></a>
-                <span class="bs-icon-sm d-flex justify-content-center align-items-center me-2 bs-icon">
-                    <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" width="300%" class="">
-                </span>
+            <span class="bs-icon-sm d-flex justify-content-center align-items-center me-2 bs-icon">
+                <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" width="300%" class="">
+            </span>
             <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
                 <span class="visually-hidden">Toggle navigation</span>
                 <span class="navbar-toggler-icon"></span>
@@ -43,7 +43,7 @@
             </div>
         </div>
     </nav>
-    
+
 
     <div>
         <section>
@@ -167,21 +167,21 @@
                                         <div class="slideshow-container">
                                             <div class="mySlides fade">
                                                 <div class="numbertext">1 / 3</div>
-                                                <img src="{{ asset('assets/img/developer/indah.jpg') }}"
+                                                <img src="{{ asset('assets/img/profil/IMG_0107.jpg') }}"
                                                     style="width:100%" alt="foto produk">
-                                                <div class="text">Caption Text</div>
+                                                <div class="text">Toko Kelontong</div>
                                             </div>
                                             <div class="mySlides fade">
                                                 <div class="numbertext">2 / 3</div>
-                                                <img src="{{ asset('assets/img/developer/caesil.jpg') }}"
+                                                <img src="{{ asset('assets/img/profil/IMG_0110.jpg') }}"
                                                     style="width:100%" alt="foto produk">
-                                                <div class="text">Caption Two</div>
+                                                <div class="text">Toko Kelontong</div>
                                             </div>
                                             <div class="mySlides fade">
                                                 <div class="numbertext">3 / 3</div>
-                                                <img src="{{ asset('assets/img/developer/nadila.jpg') }}"
+                                                <img src="{{ asset('assets/img/profil/IMG_9676.jpg') }}"
                                                     style="width:100%" alt="foto produk">
-                                                <div class="text">Caption Three</div>
+                                                <div class="text">Toko Kelontong</div>
                                             </div>
                                             <a class="prev" onclick="plusSlides(-1)">❮</a>
                                             <a class="next" onclick="plusSlides(1)">❯</a>
@@ -200,25 +200,18 @@
                                     <div class="card-body">
                                         <h5>Pengrajin Tempe</h5>
                                     </div>
-
                                     <div class="slideshow-container">
                                         <div class="mySlidesDua fade">
-                                            <div class="numbertext">1 / 3</div>
-                                            <img src="{{ asset('assets/img/developer/yanto.jpg') }}"
+                                            <div class="numbertext">1 / 2</div>
+                                            <img src="{{ asset('assets/img/profil/pt1.jpg') }}"
                                                 style="width:100%" alt="foto produk">
-                                            <div class="text">Caption Text</div>
+                                                <div class="text">src: <a href="https://radarjatim.id/kunjungi-pengrajin-tempe-bambang-haryo-dorong-harga-kedelai-bisa-lebih-murah/">Kunjungi Pengrajin Tempe, Bambang Haryo Dorong Harga Kedelai Bisa Lebih Murah</a></div>
                                         </div>
                                         <div class="mySlidesDua fade">
-                                            <div class="numbertext">2 / 3</div>
-                                            <img src="{{ asset('assets/img/developer/yoan.jpg') }}"
+                                            <div class="numbertext">2 / 2</div>
+                                            <img src="{{ asset('assets/img/profil/pt2.jpg') }}"
                                                 style="width:100%" alt="foto produk">
-                                            <div class="text">Caption Two</div>
-                                        </div>
-                                        <div class="mySlidesDua fade">
-                                            <div class="numbertext">3 / 3</div>
-                                            <img src="{{ asset('assets/img/developer/gab.jpg') }}" style="width:100%"
-                                                alt="foto produk">
-                                            <div class="text">Caption Three</div>
+                                            <div class="text">src: <a href="https://kelurahan-kelun.madiunkota.go.id/index.php/2018/05/24/produk-unggulan-tempe/">Produk Unggulan Tempe</a></div>
                                         </div>
                                         <a class="prev" onclick="plusSlidesDua(-1)">❮</a>
                                         <a class="next" onclick="plusSlidesDua(1)">❯</a>
@@ -227,7 +220,6 @@
                                     <div style="text-align:center">
                                         <span class="dotDua" onclick="currentSlideDua(1)"></span>
                                         <span class="dotDua" onclick="currentSlideDua(2)"></span>
-                                        <span class="dotDua" onclick="currentSlideDua(3)"></span>
                                     </div>
 
                                 </div>
@@ -242,21 +234,21 @@
                                     <div class="slideshow-container">
                                         <div class="mySlidesTiga fade">
                                             <div class="numbertext">1 / 3</div>
-                                            <img src="{{ asset('assets/img/developer/indah.jpg') }}"
+                                            <img src="{{ asset('assets/img/profil/IMG_9678.jpg') }}"
                                                 style="width:100%" alt="foto produk">
-                                            <div class="text">Caption Text</div>
+                                            <div class="text">Penggiling Beras di Weru</div>
                                         </div>
                                         <div class="mySlidesTiga fade">
                                             <div class="numbertext">2 / 3</div>
-                                            <img src="{{ asset('assets/img/developer/nadila.jpg') }}"
+                                            <img src="{{ asset('assets/img/profil/IMG_9679.jpg') }}"
                                                 style="width:100%" alt="foto produk">
-                                            <div class="text">Caption Two</div>
+                                            <div class="text">Penggiling Beras di Weru</div>
                                         </div>
                                         <div class="mySlidesTiga fade">
                                             <div class="numbertext">3 / 3</div>
-                                            <img src="{{ asset('assets/img/developer/saras.jpg') }}"
+                                            <img src="{{ asset('assets/img/profil/IMG_9683.jpg') }}"
                                                 style="width:100%" alt="foto produk">
-                                            <div class="text">Caption Three</div>
+                                            <div class="text">Penggiling Beras di Weru</div>
                                         </div>
                                         <a class="prev" onclick="plusSlidesTiga(-1)">❮</a>
                                         <a class="next" onclick="plusSlidesTiga(1)">❯</a>
@@ -276,22 +268,16 @@
                                     </div>
                                     <div class="slideshow-container">
                                         <div class="mySlidesEmpat fade">
-                                            <div class="numbertext">1 / 3</div>
-                                            <img src="{{ asset('assets/img/developer/bram.jpg') }}"
+                                            <div class="numbertext">1 / 2</div>
+                                            <img src="{{ asset('assets/img/profil/mb2.jpg') }}"
                                                 style="width:100%" alt="foto produk">
-                                            <div class="text">Caption Text</div>
+                                                <div class="text">src: <a href="https://infopublik.id/galeri/foto/detail/97675?video=">Mebel Kayu</a></div>
                                         </div>
                                         <div class="mySlidesEmpat fade">
                                             <div class="numbertext">2 / 3</div>
-                                            <img src="{{ asset('assets/img/developer/caesil.jpg') }}"
+                                            <img src="{{ asset('assets/img/profil/mk1.jpg') }}"
                                                 style="width:100%" alt="foto produk">
-                                            <div class="text">Caption Two</div>
-                                        </div>
-                                        <div class="mySlidesEmpat fade">
-                                            <div class="numbertext">3 / 3</div>
-                                            <img src="{{ asset('assets/img/developer/dani.jpg') }}"
-                                                style="width:100%" alt="foto produk">
-                                            <div class="text">Caption Three</div>
+                                                <div class="text">src: <a href="https://infopublik.id/galeri/foto/detail/97675?video=">Mebel Kayu</a></div>
                                         </div>
                                         <a class="prev" onclick="plusSlidesEmpat(-1)">❮</a>
                                         <a class="next" onclick="plusSlidesEmpat(1)">❯</a>
@@ -300,7 +286,6 @@
                                     <div style="text-align:center">
                                         <span class="dotEmpat" onclick="currentSlideEmpat(1)"></span>
                                         <span class="dotEmpat" onclick="currentSlideEmpat(2)"></span>
-                                        <span class="dotEmpat" onclick="currentSlideEmpat(3)"></span>
                                     </div>
                                 </div>
                             </div>
@@ -314,15 +299,13 @@
                             <div class="col-lg-6">
                                 <div class="card custom-card mb-3">
                                     <div class="card-body">
-                                        <h5>Mesjid I</h5>
+                                        <h5>Mesjid</h5>
                                         <div class="scroll-container">
-                                            <img src="{{ asset('assets/img/products/1.jpg') }}" alt="Cinque Terre"
+                                            <img src="{{ asset('assets/img/profil/IMG_9658.jpg') }}" alt="Cinque Terre"
                                                 width="600" height="400">
-                                            <img src="{{ asset('assets/img/products/2.jpg') }}" alt="Forest"
+                                            <img src="{{ asset('assets/img/profil/IMG_0116.jpg') }}" alt="Forest"
                                                 width="600" height="400">
-                                            <img src="{{ asset('assets/img/products/3.jpg') }}" alt="Northern Lights"
-                                                width="600" height="400">
-                                            <img src="{{ asset('assets/img/products/2.jpg') }}" alt="Mountains"
+                                            <img src="{{ asset('assets/img/profil/IMG_0118.jpg') }}" alt="Northern Lights"
                                                 width="600" height="400">
                                         </div>
                                     </div>
@@ -334,13 +317,11 @@
                                         <h5>Karawitan</h5>
                                     </div>
                                     <div class="scroll-container">
-                                        <img src="{{ asset('assets/img/products/1.jpg') }}" alt="Cinque Terre"
+                                        <img src="{{ asset('assets/img/profil/karawitan1.jpg') }}" alt="Cinque Terre"
                                             width="600" height="400">
-                                        <img src="{{ asset('assets/img/products/2.jpg') }}" alt="Forest"
+                                        <img src="{{ asset('assets/img/profil/karawitan2.jpg') }}" alt="Forest"
                                             width="600" height="400">
-                                        <img src="{{ asset('assets/img/products/3.jpg') }}" alt="Northern Lights"
-                                            width="600" height="400">
-                                        <img src="{{ asset('assets/img/products/2.jpg') }}" alt="Mountains"
+                                        <img src="{{ asset('assets/img/profil/karawitan3.jpg') }}" alt="Northern Lights"
                                             width="600" height="400">
                                     </div>
                                 </div>
@@ -352,13 +333,11 @@
                                     <div class="card-body">
                                         <h5>Balai Desa</h5>
                                         <div class="scroll-container">
-                                            <img src="{{ asset('assets/img/products/1.jpg') }}" alt="Cinque Terre"
+                                            <img src="{{ asset('assets/img/profil/balai.jpg') }}" alt="Cinque Terre"
                                                 width="600" height="400">
-                                            <img src="{{ asset('assets/img/products/2.jpg') }}" alt="Forest"
+                                            <img src="{{ asset('assets/img/profil/balai2.jpg') }}" alt="Forest"
                                                 width="600" height="400">
-                                            <img src="{{ asset('assets/img/products/3.jpg') }}" alt="Northern Lights"
-                                                width="600" height="400">
-                                            <img src="{{ asset('assets/img/products/2.jpg') }}" alt="Mountains"
+                                            <img src="{{ asset('assets/img/profil/balai.jpg') }}" alt="Northern Lights"
                                                 width="600" height="400">
                                         </div>
                                     </div>
@@ -370,13 +349,11 @@
                                         <h5>Balai RT 26</h5>
                                     </div>
                                     <div class="scroll-container">
-                                        <img src="{{ asset('assets/img/products/1.jpg') }}" alt="Cinque Terre"
+                                        <img src="{{ asset('assets/img/profil/IMG_9665.jpg') }}" alt="Cinque Terre"
                                             width="600" height="400">
-                                        <img src="{{ asset('assets/img/products/2.jpg') }}" alt="Forest"
+                                        <img src="{{ asset('assets/img/profil/IMG_9667.jpg') }}" alt="Forest"
                                             width="600" height="400">
-                                        <img src="{{ asset('assets/img/products/3.jpg') }}" alt="Northern Lights"
-                                            width="600" height="400">
-                                        <img src="{{ asset('assets/img/products/2.jpg') }}" alt="Mountains"
+                                        <img src="{{ asset('assets/img/profil/IMG_9670.jpg') }}" alt="Northern Lights"
                                             width="600" height="400">
                                     </div>
                                 </div>
@@ -388,13 +365,11 @@
                                     <div class="card-body">
                                         <h5>Paud</h5>
                                         <div class="scroll-container">
-                                            <img src="{{ asset('assets/img/products/1.jpg') }}" alt="Cinque Terre"
+                                            <img src="{{ asset('assets/img/profil/IMG_0100.jpg') }}" alt="Cinque Terre"
                                                 width="600" height="400">
-                                            <img src="{{ asset('assets/img/products/2.jpg') }}" alt="Forest"
+                                            <img src="{{ asset('assets/img/profil/IMG_0101.jpg') }}" alt="Forest"
                                                 width="600" height="400">
-                                            <img src="{{ asset('assets/img/products/3.jpg') }}" alt="Northern Lights"
-                                                width="600" height="400">
-                                            <img src="{{ asset('assets/img/products/2.jpg') }}" alt="Mountains"
+                                            <img src="{{ asset('assets/img/profil/IMG_0100.jpg') }}" alt="Northern Lights"
                                                 width="600" height="400">
                                         </div>
                                     </div>
@@ -406,13 +381,13 @@
                                         <h5>Lapangan Voli</h5>
                                     </div>
                                     <div class="scroll-container">
-                                        <img src="{{ asset('assets/img/products/1.jpg') }}" alt="Cinque Terre"
+                                        <img src="{{ asset('assets/img/profil/IMG_0370.jpg') }}" alt="Cinque Terre"
                                             width="600" height="400">
-                                        <img src="{{ asset('assets/img/products/2.jpg') }}" alt="Forest"
+                                        <img src="{{ asset('assets/img/profil/IMG_0372.jpg') }}" alt="Forest"
                                             width="600" height="400">
-                                        <img src="{{ asset('assets/img/products/3.jpg') }}" alt="Northern Lights"
+                                        <img src="{{ asset('assets/img/profil/IMG_0371.jpg') }}" alt="Northern Lights"
                                             width="600" height="400">
-                                        <img src="{{ asset('assets/img/products/2.jpg') }}" alt="Mountains"
+                                        <img src="{{ asset('assets/img/profil/IMG_0373.jpg') }}" alt="Mountains"
                                             width="600" height="400">
                                     </div>
                                 </div>
@@ -480,7 +455,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
-    {{-- <script src="{{ asset('assetss/js/main.js') }}"></script> --}}
+    <script src="{{ asset('assets/js/main.js') }}"></script>
     <!--  Chart js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.bundle.min.js"></script>
 

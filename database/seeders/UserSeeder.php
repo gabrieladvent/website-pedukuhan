@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             'first_name' => 'Super',
             'last_name' => 'Admin',
             'email' => 'super.admin',
-            'password' => bcrypt('superadmin'),
+            'password' => bcrypt('Gab_adv01'),
             'slug' => 'super-admin',
             'admin' => '6',
             'activate' => '7',
